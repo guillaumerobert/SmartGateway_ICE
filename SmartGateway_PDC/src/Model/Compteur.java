@@ -32,10 +32,19 @@ public class Compteur {
 		this.consoHeuresPleines = rangeMin + (rangeMax - rangeMin) * generateur.nextDouble();
 	}
 	
+	
+	/**
+	 * 
+	 * @return Double : Conso heures pleines
+	 */
 	public double getHpConsumption(){
 		return this.consoHeuresPleines;
 	}
 	
+	/**
+	 * 
+	 * @return Double : Conso heures creuses
+	 */
 	public double getHcConsumption(){
 		return this.consoHeuresCreuses;
 	}
