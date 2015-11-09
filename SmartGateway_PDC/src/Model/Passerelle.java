@@ -1,3 +1,4 @@
+package Model;
 import java.awt.List;
 import java.util.ArrayList;
 
@@ -12,6 +13,8 @@ import java.util.ArrayList;
 public class Passerelle {
 	
 	private ArrayList<Compteur> compteurs;
+	private boolean enLigne;
+	private boolean recoitSignal;
 	
 	public Passerelle(){
 		this.compteurs = new ArrayList<Compteur>();
@@ -31,7 +34,7 @@ public class Passerelle {
 	 * 
 	 * @return Double : Le total des consos de tous les compteurs connus de la passerelle 
 	 */
-	public double getTotalConsumption(){
+	public double getTotalConsumption(){    
 		
 		double total = 0;
 		for(Compteur cpt : this.compteurs){
@@ -41,6 +44,19 @@ public class Passerelle {
 		
 	}
 	
-	
+	/**
+	 * 
+	 * @return String : Chaine recapitulative de tous les compteurs présents dans la passerelle 
+	 */
+	public String getResumeParCompteur(){
+		StringBuilder sb = new StringBuilder();
+		for(Compteur cpt : this.compteurs){
+			sb.append("---------------------------------\n");
+			sb.append(cpt.toString());
+			sb.append("\n");
+			sb.append("---------------------------------\n");
+		}
+		return sb.toString();
+	}	
 
 }

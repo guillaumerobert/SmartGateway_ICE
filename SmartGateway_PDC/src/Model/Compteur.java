@@ -1,3 +1,4 @@
+package Model;
 import java.util.Random;
 
 
@@ -22,8 +23,8 @@ public class Compteur {
 	private Random generateur;
 	
 	public Compteur(){
-		this.numeroCompteur = this.generateur.nextInt();
 		this.generateur = new Random();
+		this.numeroCompteur = this.generateur.nextInt();
 		this.rangeMin = 100.0;
 		this.rangeMax = 10000.0;
 		
@@ -39,9 +40,17 @@ public class Compteur {
 		return this.consoHeuresCreuses;
 	}
 	
+	/**
+	 * Incremente aléatoirement la consommation effective , d'un maximum de 10 KWh
+	 */
+	public void consommer(){
+		this.consoHeuresCreuses += (this.generateur.nextDouble() * 10);
+		this.consoHeuresPleines += (this.generateur.nextDouble() * 10);
+	}
+	
 	@Override
 	public String toString(){
-		return "Relevé Compteur N°"+this.numeroCompteur+" HP:"+this.consoHeuresPleines+" HC:"+this.consoHeuresCreuses+"\n";
+		return "Relevé Compteur N°"+this.numeroCompteur+" ::: HP:"+this.consoHeuresPleines+"KWh. HC:"+this.consoHeuresCreuses+"KWh.\n";
 	}
 
 }
