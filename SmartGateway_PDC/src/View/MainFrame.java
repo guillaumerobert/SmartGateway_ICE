@@ -9,8 +9,19 @@ import javax.swing.JFrame;
  */
 public class MainFrame extends JFrame {
 	
-	public MainFrame(){
-		//TODO
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private GlobalPane globalPane;
+	
+	public MainFrame(GlobalPane globalpane){
+		this.globalPane = globalpane;
+		this.setContentPane(globalpane);
+	}
+	
+	public GlobalPane getGlobalPane(){
+		return this.globalPane;
 	}
 
 }
