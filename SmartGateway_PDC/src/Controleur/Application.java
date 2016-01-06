@@ -16,10 +16,16 @@ public class Application {
 	 */
 	
 	
-	// Pour l'instant : Maquette en mode console
 	public static void main(String[] args) {
-	
-		GlobalPane gp = new GlobalPane();
+		
+		Passerelle gateway = new Passerelle();
+		for(int i=0;i<10;i++){
+			gateway.ajouterCompteur(new Compteur());
+		}
+		
+		ControleurPasserelle ctrlPass = new ControleurPasserelle(gateway); 
+
+		GlobalPane gp = new GlobalPane(ctrlPass);
 		MainFrame fen = new MainFrame(gp);
 		fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fen.pack();

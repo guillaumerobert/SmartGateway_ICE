@@ -37,7 +37,8 @@ public class ControleurPasserelle {
     // Constructors
     
     //## auto_generated 
-    public  ControleurPasserelle() {
+    public  ControleurPasserelle(Passerelle pass) {
+    	itsPasserelle = pass;
     }
     
     //## operation envoiDonneesDisplay() 

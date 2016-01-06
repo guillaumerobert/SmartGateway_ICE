@@ -10,8 +10,13 @@
 
 package Vue;
 
-//## link itsPasserelle 
-import Modele.Passerelle;
+
+import java.awt.GridLayout;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
 //## link itsControleurPasserelle 
 import Controleur.ControleurPasserelle;
 
@@ -23,25 +28,36 @@ import Controleur.ControleurPasserelle;
 
 
 //## class Display 
-public class Display {
+public class Display extends JPanel {
     
-    protected ControleurPasserelle itsControleurPasserelle;		//## link itsControleurPasserelle 
-    
-    protected Passerelle itsPasserelle;		//## link itsPasserelle 
-    
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	protected ControleurPasserelle itsControleurPasserelle;		//## link itsControleurPasserelle 
+   
+    private JLabel titreDisplay;
+    private JTextArea affichageListeCompteurs;
     
     // Constructors
     
     //## operation Display() 
-    public  Display() {
-        //#[ operation Display() 
-        //#]
+    public  Display(ControleurPasserelle ctrlPass) {
+    	itsControleurPasserelle=ctrlPass;
+    	this.setLayout(new GridLayout(2,1));
+    	titreDisplay = new JLabel("<html><body><h2>Display</h2></body></html>");
+    	add(titreDisplay);
+    	afficherConso();
     }
     
     //## operation afficherConso() 
     public void afficherConso() {
-        //#[ operation afficherConso() 
-        //#]
+    	affichageListeCompteurs = new JTextArea(this.itsControleurPasserelle.getItsPasserelle().getResumeParCompteur());
+    	affichageListeCompteurs.setLineWrap(true);
+    	affichageListeCompteurs.setWrapStyleWord(true);
+    	affichageListeCompteurs.setOpaque(false);
+    	affichageListeCompteurs.setEditable(false);
+    	add(affichageListeCompteurs);
     }
     
     //## auto_generated 
@@ -76,40 +92,7 @@ public class Display {
     public void _clearItsControleurPasserelle() {
         itsControleurPasserelle = null;
     }
-    
-    //## auto_generated 
-    public Passerelle getItsPasserelle() {
-        return itsPasserelle;
-    }
-    
-    //## auto_generated 
-    public void __setItsPasserelle(Passerelle p_Passerelle) {
-        itsPasserelle = p_Passerelle;
-    }
-    
-    //## auto_generated 
-    public void _setItsPasserelle(Passerelle p_Passerelle) {
-        if(itsPasserelle != null)
-            {
-                itsPasserelle.__setItsDisplay(null);
-            }
-        __setItsPasserelle(p_Passerelle);
-    }
-    
-    //## auto_generated 
-    public void setItsPasserelle(Passerelle p_Passerelle) {
-        if(p_Passerelle != null)
-            {
-                p_Passerelle._setItsDisplay(this);
-            }
-        _setItsPasserelle(p_Passerelle);
-    }
-    
-    //## auto_generated 
-    public void _clearItsPasserelle() {
-        itsPasserelle = null;
-    }
-    
+        
 }
 /*********************************************************************
 	File Path	: DefaultComponent/DefaultConfig/Vue/Display.java

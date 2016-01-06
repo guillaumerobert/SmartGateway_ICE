@@ -177,23 +177,6 @@ public class Passerelle {
         itsDisplay = p_Display;
     }
     
-    //## auto_generated 
-    public void _setItsDisplay(Display p_Display) {
-        if(itsDisplay != null)
-            {
-                itsDisplay.__setItsPasserelle(null);
-            }
-        __setItsDisplay(p_Display);
-    }
-    
-    //## auto_generated 
-    public void setItsDisplay(Display p_Display) {
-        if(p_Display != null)
-            {
-                p_Display._setItsPasserelle(this);
-            }
-        _setItsDisplay(p_Display);
-    }
     
     //## auto_generated 
     public void _clearItsDisplay() {
