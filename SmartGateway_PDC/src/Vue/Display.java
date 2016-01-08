@@ -15,6 +15,7 @@ import java.awt.GridLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 //## link itsControleurPasserelle 
@@ -37,6 +38,7 @@ public class Display extends JPanel {
 	protected ControleurPasserelle itsControleurPasserelle;		//## link itsControleurPasserelle 
    
     private JLabel titreDisplay;
+    private JScrollPane sp;
     private JTextArea affichageListeCompteurs;
     
     // Constructors
@@ -57,7 +59,8 @@ public class Display extends JPanel {
     	affichageListeCompteurs.setWrapStyleWord(true);
     	affichageListeCompteurs.setOpaque(false);
     	affichageListeCompteurs.setEditable(false);
-    	add(affichageListeCompteurs);
+    	sp = new JScrollPane(affichageListeCompteurs);
+    	add(sp);
     }
     
     //## auto_generated 
