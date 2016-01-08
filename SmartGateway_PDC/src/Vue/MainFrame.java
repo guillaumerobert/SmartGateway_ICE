@@ -1,4 +1,7 @@
 package Vue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -30,6 +33,14 @@ public class MainFrame extends JFrame {
 		this.menuBar.add(menuEditer);
 		this.menuEditer.add(editer);
 		this.setJMenuBar(this.menuBar);
+		
+		editer.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO : Appeler ParameterFrame avec la liste des consommateurs en param
+			}
+		});
 		
 		this.globalPane = globalpane;
 		this.setContentPane(globalpane);

@@ -39,7 +39,8 @@ public class Application {
 		ControleurPasserelle ctrlPass = new ControleurPasserelle(gateway); 
 
 		GlobalPane gp = new GlobalPane(ctrlPass);
-		MainFrame fen = new MainFrame(gp);
+		MainFrame fen = new MainFrame(gp);  // TODO : args a rajouter : CtrlFournisseur selon dc de ouf
+		
 		fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fen.pack();
 		fen.repaint();

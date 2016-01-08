@@ -7,7 +7,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Controleur.RRC;
 import Modele.FournisseurEnergie;
 
 public class ParameterFrame extends JFrame {
