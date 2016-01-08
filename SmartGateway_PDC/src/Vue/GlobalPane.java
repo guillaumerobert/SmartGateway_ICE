@@ -2,6 +2,7 @@ package Vue;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -31,14 +32,19 @@ public class GlobalPane extends JPanel{
 		
 		
 		//setBackground(Color.BLACK);
+
+// SetFont pourri :		
+//		title=new JLabel("<html><body><h1 "
+//				+ "style ='color: red; "
+//				+ "font-family: 'Lato', sans-serif; "
+//				+ "font-size: 54px; font-weight: 300; "
+//				+ "line-height: 58px; "
+//				+ "margin: 0 0 58px;"
+//				+ "'>SmartGateway RTTS</h1></body></html>");
 		
-		title=new JLabel("<html><body><h1 "
-				+ "style ='color: red; "
-				+ "font-family: 'Lato', sans-serif; "
-				+ "font-size: 54px; font-weight: 300; "
-				+ "line-height: 58px; "
-				+ "margin: 0 0 58px;"
-				+ "'>SmartGateway RTTS</h1></body></html>");
+		// FIXME : Trouver une bonne font java sans passer par le html
+		title = new JLabel("SmartGateway RTTS");
+		title.setFont(new Font("Serif",Font.BOLD,25));
 		
 		
 		titlePanel = new JPanel();
