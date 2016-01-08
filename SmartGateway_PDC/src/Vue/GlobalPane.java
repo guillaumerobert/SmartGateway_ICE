@@ -22,14 +22,12 @@ public class GlobalPane extends JPanel{
 	private ControleurPasserelle ctrlPass;
 	private Display gatewayDisplay;
 
-	
 	public GlobalPane(ControleurPasserelle ctrlP){
 		
 		ctrlPass = ctrlP;
 		setLayout(new BorderLayout());
 		setOpaque(true);
 		this.setBackground(new Color(173,183,189));
-		
 		
 		//setBackground(Color.BLACK);
 
