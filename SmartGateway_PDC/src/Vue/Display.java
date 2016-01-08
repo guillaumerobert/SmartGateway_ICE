@@ -11,8 +11,10 @@
 package Vue;
 
 
+import java.awt.Color;
 import java.awt.GridLayout;
 
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -46,8 +48,14 @@ public class Display extends JPanel {
     //## operation Display() 
     public  Display(ControleurPasserelle ctrlPass) {
     	itsControleurPasserelle=ctrlPass;
-    	this.setLayout(new GridLayout(2,1));
-    	titreDisplay = new JLabel("<html><body><h2>Display</h2></body></html>");
+    	this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
+    	titreDisplay = new JLabel("<html><body><h2 style=' color: orange; "
+    			+ "font-family: 'Raleway',sans-serif; "
+    			+ "font-size: 62px; font-weight: 800; "
+    			+ "line-height: 72px; margin: 0 0 24px; "
+    			+ "text-align: center; "
+    			+ "text-transform: uppercase;"
+    			+ "' >Display</h2></body></html>");
     	add(titreDisplay);
     	afficherConso();
     }
@@ -55,6 +63,9 @@ public class Display extends JPanel {
     //## operation afficherConso() 
     public void afficherConso() {
     	affichageListeCompteurs = new JTextArea(this.itsControleurPasserelle.getItsPasserelle().getResumeParCompteur());
+    	affichageListeCompteurs.setForeground(Color.green);
+    	affichageListeCompteurs.setOpaque(true);
+    	affichageListeCompteurs.setBackground(Color.black);
     	affichageListeCompteurs.setLineWrap(true);
     	affichageListeCompteurs.setWrapStyleWord(true);
     	affichageListeCompteurs.setOpaque(false);
