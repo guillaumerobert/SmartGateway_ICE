@@ -12,6 +12,7 @@ package Vue;
 
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 
 import javax.swing.BoxLayout;
@@ -49,6 +50,7 @@ public class Display extends JPanel {
     public  Display(ControleurPasserelle ctrlPass) {
     	itsControleurPasserelle=ctrlPass;
     	this.setLayout(new BoxLayout(this,BoxLayout.PAGE_AXIS));
+    	this.setPreferredSize(new Dimension(800,400));
     	titreDisplay = new JLabel("<html><body><h2 style=' color: orange; "
     			+ "font-family: 'Raleway',sans-serif; "
     			+ "font-size: 62px; font-weight: 800; "

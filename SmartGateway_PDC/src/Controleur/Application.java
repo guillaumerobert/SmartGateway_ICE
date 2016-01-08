@@ -30,7 +30,7 @@ public class Application {
 		        }
 		    }
 		} catch (Exception e) {
-		    // If Nimbus is not available, you can set the GUI to another look and feel.
+		    System.out.println("LookAndFeel indisponible !");
 		}
 		
 		Passerelle gateway = new Passerelle();
