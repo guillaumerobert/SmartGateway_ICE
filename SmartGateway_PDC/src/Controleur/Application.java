@@ -36,11 +36,14 @@ public class Application {
 			gateway.ajouterCompteur(new Compteur());
 		}
 		
-		ControleurPasserelle ctrlPass = new ControleurPasserelle(gateway); 
+		ControleurLED ctrlLED = new ControleurLED();
+		ControleurFournisseur ctrlFournisseur = new ControleurFournisseur();
+		ControleurDisplay ctrlDisplay = new ControleurDisplay(gateway);
 
-		GlobalPane gp = new GlobalPane(ctrlPass);
-		MainFrame fen = new MainFrame(gp);  // TODO : args a rajouter : CtrlFournisseur selon dc de ouf
+		GlobalPane gp = new GlobalPane(ctrlDisplay, ctrlLED);
+		MainFrame fen = new MainFrame(ctrlFournisseur);
 		
+		fen.setContentPane(gp);
 		fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fen.pack();
 		fen.repaint();

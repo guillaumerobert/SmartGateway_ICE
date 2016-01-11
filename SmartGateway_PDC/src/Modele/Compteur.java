@@ -4,7 +4,7 @@
 	Component	: DefaultComponent
 	Configuration 	: DefaultConfig
 	Model Element	: Compteur
-//!	Generated Date	: Wed, 6, Jan 2016 
+//!	Generated Date	: Mon, 11, Jan 2016 
 	File Path	: DefaultComponent/DefaultConfig/Modele/Compteur.java
 *********************************************************************/
 
@@ -22,91 +22,126 @@ import java.util.Random;
 //## class Compteur 
 public class Compteur {
     
-    protected double conso_heures_creuses;		//## attribute conso_heures_creuses 
+    protected double consoHeuresCreuses;		//## attribute consoHeuresCreuses 
     
-    protected double conso_heures_pleines;		//## attribute conso_heures_pleines 
+    protected double consoHeuresPleines;		//## attribute consoHeuresPleines 
     
-    protected int numero_compteur;		//## attribute numero_compteur 
+    protected int numeroCompteur;		//## attribute numeroCompteur 
     
-    protected double range_max;		//## attribute range_max 
+    protected double rangeMax;		//## attribute rangeMax 
     
-    protected double range_min;		//## attribute range_min 
+    protected double rangeMin;		//## attribute rangeMin 
+    
+    protected Consommateur itsConsommateur;		//## link itsConsommateur 
     
     private Random generateur;
+    
     
     // Constructors
     
     //## operation Compteur() 
     public  Compteur() {
-		this.generateur = new Random();
-		this.numero_compteur = this.generateur.nextInt();
-		this.range_min = 100.0;
-		this.range_max = 10000.0;
+    	this.generateur = new Random();
+		this.numeroCompteur = this.generateur.nextInt();
+		this.rangeMin = 100.0;
+		this.rangeMax = 10000.0;
 		
-		this.conso_heures_creuses = range_min + (range_max - range_min) * generateur.nextDouble();
-		this.conso_heures_pleines = range_min + (range_max - range_min) * generateur.nextDouble();
+		this.consoHeuresCreuses = rangeMin + (rangeMax - rangeMin) * generateur.nextDouble();
+		this.consoHeuresPleines = rangeMin + (rangeMax - rangeMin) * generateur.nextDouble();
     }
     
     //## operation consommer() 
     public void consommer() {
-		this.conso_heures_creuses += (this.generateur.nextDouble() * 10);
-		this.conso_heures_pleines += (this.generateur.nextDouble() * 10);
+    	this.consoHeuresCreuses += (this.generateur.nextDouble() * 10);
+		this.consoHeuresPleines += (this.generateur.nextDouble() * 10);
     }
     
-    //## operation to_string() 
-	@Override
-	public String toString(){
-		return "Relevé Compteur N°"+this.numero_compteur+" ::: HP:"+this.conso_heures_pleines+"KWh. HC:"+this.conso_heures_creuses+"KWh.\n";
-	}
-    
-    //## auto_generated 
-    public double getConso_heures_creuses() {
-        return conso_heures_creuses;
+    //## operation toString() 
+    public String toString() {
+    	return "Relevé Compteur N°"+this.numeroCompteur+" ::: HP:"+this.consoHeuresPleines+"KWh. HC:"+this.consoHeuresCreuses+"KWh.\n";
     }
     
     //## auto_generated 
-    public void setConso_heures_creuses(double p_conso_heures_creuses) {
-        conso_heures_creuses = p_conso_heures_creuses;
+    public double getConsoHeuresCreuses() {
+        return consoHeuresCreuses;
     }
     
     //## auto_generated 
-    public double getConso_heures_pleines() {
-    	return conso_heures_pleines;
+    public void setConsoHeuresCreuses(double p_consoHeuresCreuses) {
+        consoHeuresCreuses = p_consoHeuresCreuses;
     }
     
     //## auto_generated 
-    public void setConso_heures_pleines(double p_conso_heures_pleines) {
-        conso_heures_pleines = p_conso_heures_pleines;
+    public double getConsoHeuresPleines() {
+        return consoHeuresPleines;
     }
     
     //## auto_generated 
-    public int getNumero_compteur() {
-        return numero_compteur;
+    public void setConsoHeuresPleines(double p_consoHeuresPleines) {
+        consoHeuresPleines = p_consoHeuresPleines;
     }
     
     //## auto_generated 
-    public void setNumero_compteur(int p_numero_compteur) {
-        numero_compteur = p_numero_compteur;
+    public int getNumeroCompteur() {
+        return numeroCompteur;
     }
     
     //## auto_generated 
-    public double getRange_max() {
-        return range_max;
+    public void setNumeroCompteur(int p_numeroCompteur) {
+        numeroCompteur = p_numeroCompteur;
     }
     
     //## auto_generated 
-    public void setRange_max(double p_range_max) {
-        range_max = p_range_max;
+    public double getRangeMax() {
+        return rangeMax;
     }
     
     //## auto_generated 
-    public double getRange_min() {
-        return range_min;
+    public void setRangeMax(double p_rangeMax) {
+        rangeMax = p_rangeMax;
     }
     
     //## auto_generated 
-    public void setRange_min(double p_range_min) {
-        range_min = p_range_min;
+    public double getRangeMin() {
+        return rangeMin;
+    }
+    
+    //## auto_generated 
+    public void setRangeMin(double p_rangeMin) {
+        rangeMin = p_rangeMin;
+    }
+    
+    //## auto_generated 
+    public Consommateur getItsConsommateur() {
+        return itsConsommateur;
+    }
+    
+    //## auto_generated 
+    public void __setItsConsommateur(Consommateur p_Consommateur) {
+        itsConsommateur = p_Consommateur;
+    }
+    
+    //## auto_generated 
+    public void _setItsConsommateur(Consommateur p_Consommateur) {
+        if(itsConsommateur != null)
+            {
+                itsConsommateur.__setItsCompteur(null);
+            }
+        __setItsConsommateur(p_Consommateur);
+    }
+    
+    //## auto_generated 
+    public void setItsConsommateur(Consommateur p_Consommateur) {
+        if(p_Consommateur != null)
+            {
+                p_Consommateur._setItsCompteur(this);
+            }
+        _setItsConsommateur(p_Consommateur);
+    }
+    
+    //## auto_generated 
+    public void _clearItsConsommateur() {
+        itsConsommateur = null;
     }
     
 }
