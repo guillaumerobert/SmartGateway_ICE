@@ -21,6 +21,8 @@ public class GlobalPane extends JPanel{
 	private JLabel title;
 	private ControleurPasserelle ctrlPass;
 	private Display gatewayDisplay;
+	
+	private LED l;
 
 	public GlobalPane(ControleurPasserelle ctrlP){
 		
@@ -51,13 +53,12 @@ public class GlobalPane extends JPanel{
 		gatewayDisplay = new Display(ctrlPass);
 		
 		// TODO : Panel LEDs
-		JPanel panelLed = new JPanel();
-		panelLed.setOpaque(true);
-		panelLed.add(new JLabel("<html><body><h2 style='color:orange;'>TODO <br>LEDS</h2></body></html>"));
+		l = new LED();
+		l.setOpaque(true);
 		
 		this.add(titlePanel, BorderLayout.NORTH);
 		this.add(gatewayDisplay,BorderLayout.CENTER );
-		this.add(panelLed, BorderLayout.EAST);
+		this.add(l, BorderLayout.EAST);
 		
 	}
 	

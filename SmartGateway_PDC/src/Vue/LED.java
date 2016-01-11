@@ -14,6 +14,9 @@ import javax.swing.JPanel;
 //## link itsControleurPasserelle 
 import Controleur.ControleurPasserelle;
 import java.awt.Canvas;
+import java.awt.Font;
+import javax.swing.SwingConstants;
+import java.awt.FlowLayout;
 
 //----------------------------------------------------------------------------
 // Vue/LED.java                                                                  
@@ -34,30 +37,41 @@ public class LED extends JPanel {
     protected Passerelle itsPasserelle;//## link itsPasserelle 
     
     private BorderLayout mainBorder;
+    private JPanel panelCentral;
     private JPanel panelLed;
+    private JPanel panelLedRouge;
+    private JPanel panelLedVerte;
+    
+    private JLabel labelTitre;
+    
     // Constructors
     
     //## operation LED() 
     public  LED() 
     {
-    	setLayout(new BorderLayout(0, 0));
     	
-    	Canvas canvas = new Canvas();
-    	add(canvas);
+    	mainBorder = new BorderLayout();
+    	panelCentral = new JPanel();
+    	this.add(panelCentral);
+    	panelCentral.setLayout(new BorderLayout());
+    	panelCentral.setBounds(100, 100, 158, 174);
+    	
+    	labelTitre = new JLabel("Statut des LED");
+    	labelTitre.setHorizontalAlignment(SwingConstants.CENTER);
+    	labelTitre.setFont(new Font("Arial Black", Font.PLAIN, 15));
+    	panelCentral.add(labelTitre, mainBorder.NORTH);
     	
     	panelLed = new JPanel();
-    	this.add(panelLed);
-    	panelLed.setLayout(new BorderLayout(0, 0));
-    	
-    	JLabel lblNewLabel = new JLabel("New label");
-    	panelLed.add(lblNewLabel, BorderLayout.NORTH);
+    	panelLed.setLayout(new GridLayout(2,1));
+    	panelCentral.add(panelLed, mainBorder.CENTER);
+ 
+    	PanelLEDRouge panelLEDRouge = new PanelLEDRouge();
+    	panelLed.add(panelLEDRouge);
+    	FlowLayout fl_panelLEDRouge = new FlowLayout(FlowLayout.CENTER, 5, 5);
+    	panelLEDRouge.setLayout(fl_panelLEDRouge);
+    	panelLed.add(new PanelLEDVerte());
     }
-    
-    public void paintComponent(Graphics g)
-    {
-    	g.setColor(Color.RED);
-    	g.fillOval(0, 0,50,50);
-    }
+
     
     //## operation miseAJourEtat() 
     public void miseAJourEtat() {
