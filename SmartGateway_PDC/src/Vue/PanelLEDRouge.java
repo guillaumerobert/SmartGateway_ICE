@@ -17,7 +17,8 @@ public class PanelLEDRouge extends JPanel {
 	public void paintComponent(Graphics g)
     {
     	g.setColor(Color.RED);
-    	g.fillOval(0, 0,30,30);
+    	g.fillOval(60,60,60,60);
+
     }
 
 }

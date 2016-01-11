@@ -74,6 +74,7 @@ public class LED extends JPanel {
     	panelCentral.setBounds(100, 100, 158, 174);
     	
     	labelTitre = new JLabel("Statut des LED");
+    	labelTitre.setForeground(new Color(255, 102, 0));
     	labelTitre.setHorizontalAlignment(SwingConstants.CENTER);
     	labelTitre.setFont(new Font("Arial Black", Font.PLAIN, 15));
     	panelCentral.add(labelTitre, mainBorder.NORTH);

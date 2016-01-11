@@ -16,6 +16,6 @@ public class PanelLEDVerte extends JPanel {
 	public void paintComponent(Graphics g)
     {
     	g.setColor(Color.GREEN);
-    	g.fillOval(0, 0,30,30);
+    	g.fillOval(60,60,60,60);
     }
 }
