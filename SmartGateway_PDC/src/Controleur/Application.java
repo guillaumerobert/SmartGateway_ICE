@@ -5,6 +5,7 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.*;
 
 import Modele.Compteur;
+import Modele.FournisseurEnergie;
 import Modele.Passerelle;
 import Vue.GlobalPane;
 import Vue.MainFrame;
@@ -32,14 +33,17 @@ public class Application {
 		}
 		
 		Passerelle gateway = new Passerelle();
+		FournisseurEnergie edf = new FournisseurEnergie("EDF", 0.25);
+		
 		for(int i=0;i<10;i++){
 			gateway.ajouterCompteur(new Compteur());
 		}
 		
 		ControleurLED ctrlLED = new ControleurLED();
-		ControleurFournisseur ctrlFournisseur = new ControleurFournisseur();
+		ControleurFournisseur ctrlFournisseur = new ControleurFournisseur(edf);
 		ControleurDisplay ctrlDisplay = new ControleurDisplay(gateway);
-
+		//RRC rrc = new RRC();
+		
 		GlobalPane gp = new GlobalPane(ctrlDisplay, ctrlLED);
 		MainFrame fen = new MainFrame(ctrlFournisseur);
 		

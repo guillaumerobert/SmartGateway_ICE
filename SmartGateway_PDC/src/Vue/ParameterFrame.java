@@ -20,24 +20,6 @@ public class ParameterFrame extends JFrame {
 	private JTextField prix;
 	private JButton bEditer;
 	
-	/*
-	 * A METTRE DANS LE MAIN
-	 */
-	
-	/*GlobalPane gp = new GlobalPane();
-	MainFrame fen = new MainFrame(gp);
-	RRC rrc = new RRC();
-	ParameterFrame pf = new ParameterFrame(rrc.getItsFournisseurEnergie());
-	
-	fen.pack();
-	fen.setVisible(true);
-	fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	
-	pf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	pf.setSize(400, 200);
-	pf.setResizable(false);
-	pf.setVisible(true);*/
-	
 	public ParameterFrame(FournisseurEnergie _fe){
 		
 		this.setLayout(new BorderLayout());
@@ -53,7 +35,7 @@ public class ParameterFrame extends JFrame {
 		prix = new JTextField(10);
 		bEditer = new JButton("Editer facture");
 		
-		prix.setText(Integer.toString(_fe.getTarif()));
+		prix.setText(Double.toString(_fe.getTarif()));
 		
 		mainPanel.add(titlePanel, BorderLayout.NORTH);
 		mainPanel.add(pricePanel, BorderLayout.CENTER);
