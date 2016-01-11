@@ -27,7 +27,7 @@ public class FournisseurEnergie {
     
     protected String nom;		//## attribute nom 
     
-    protected int tarif;		//## attribute tarif 
+    protected double tarif;		//## attribute tarif 
     
     protected LinkedList<Consommateur> itsConsommateur = new LinkedList<Consommateur>();		//## link itsConsommateur 
     
@@ -44,7 +44,12 @@ public class FournisseurEnergie {
     public  FournisseurEnergie() {
     }
     
-    //## auto_generated 
+    public FournisseurEnergie(String pNom, double pTarif) {
+    	nom = pNom;
+    	tarif = pTarif;
+	}
+
+	//## auto_generated 
     public String getNom() {
         return nom;
     }
@@ -55,7 +60,7 @@ public class FournisseurEnergie {
     }
     
     //## auto_generated 
-    public int getTarif() {
+    public double getTarif() {
         return tarif;
     }
     

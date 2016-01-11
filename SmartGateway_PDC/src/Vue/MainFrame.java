@@ -25,8 +25,11 @@ public class MainFrame extends JFrame {
 	private JMenuBar menuBar;
 	private JMenu menuEditer;
 	private JMenuItem editer;
+	private ParameterFrame pf;
+	private ControleurFournisseur ctrlF;
 	
-	public MainFrame(ControleurFournisseur ctrlFournisseur){
+	public MainFrame(ControleurFournisseur _ctrlFournisseur){
+		this.ctrlF = _ctrlFournisseur;
 		this.menuBar = new JMenuBar();
 		this.menuEditer = new JMenu("Actions");
 		this.editer = new JMenuItem("Editer facture");
@@ -39,7 +42,12 @@ public class MainFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// TODO : Appeler ParameterFrame avec la liste des consommateurs en param
+				pf = new ParameterFrame(ctrlF.getItsFournisseurEnergie());
+				
+				pf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				pf.setSize(400, 200);
+				pf.setResizable(false);
+				pf.setVisible(true);
 			}
 		});
 	}
