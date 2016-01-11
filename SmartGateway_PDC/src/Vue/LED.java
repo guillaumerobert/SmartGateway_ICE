@@ -26,8 +26,6 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-//## link itsControleurPasserelle 
-import Controleur.ControleurPasserelle;
 import java.awt.Canvas;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -41,7 +39,7 @@ import java.awt.FlowLayout;
 
 
 //## class LED 
-public class LED {
+public class LED extends JPanel {
     
     protected boolean etatEnLigne;		//## attribute etatEnLigne 
     
