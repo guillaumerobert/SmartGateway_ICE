@@ -53,7 +53,7 @@ public class ParameterFrame extends JFrame {
 		prix = new JTextField(10);
 		bEditer = new JButton("Editer facture");
 		
-		prix.setText(Integer.toString(_fe.getTarifElec()));
+		prix.setText(Integer.toString(_fe.getTarif()));
 		
 		mainPanel.add(titlePanel, BorderLayout.NORTH);
 		mainPanel.add(pricePanel, BorderLayout.CENTER);

@@ -7,6 +7,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import Controleur.ControleurFournisseur;
+
 /**
  * 
  * @author Grobert
@@ -19,13 +21,12 @@ public class MainFrame extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private GlobalPane globalPane;
 
 	private JMenuBar menuBar;
 	private JMenu menuEditer;
 	private JMenuItem editer;
 	
-	public MainFrame(GlobalPane globalpane){
+	public MainFrame(ControleurFournisseur ctrlFournisseur){
 		this.menuBar = new JMenuBar();
 		this.menuEditer = new JMenu("Actions");
 		this.editer = new JMenuItem("Editer facture");
@@ -41,13 +42,6 @@ public class MainFrame extends JFrame {
 				// TODO : Appeler ParameterFrame avec la liste des consommateurs en param
 			}
 		});
-		
-		this.globalPane = globalpane;
-		this.setContentPane(globalpane);
-	}
-	
-	public GlobalPane getGlobalPane(){
-		return this.globalPane;
 	}
 
 }

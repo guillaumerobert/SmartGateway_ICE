@@ -10,6 +10,7 @@
 
 package Modele;
 
+import java.awt.Color;
 
 //----------------------------------------------------------------------------
 // Modele/LEDModel.java                                                                  

@@ -4,7 +4,7 @@
 	Component	: DefaultComponent
 	Configuration 	: DefaultConfig
 	Model Element	: Passerelle
-//!	Generated Date	: Wed, 6, Jan 2016 
+//!	Generated Date	: Mon, 11, Jan 2016 
 	File Path	: DefaultComponent/DefaultConfig/Modele/Passerelle.java
 *********************************************************************/
 
@@ -18,9 +18,8 @@ import java.util.*;
 import Vue.Display;
 //## link itsRRC 
 import Controleur.RRC;
-import Modele.Compteur;
-//## link itsControleurPasserelle 
-import Controleur.ControleurPasserelle;
+//## link itsControleurDisplay 
+import Controleur.ControleurDisplay;
 
 //----------------------------------------------------------------------------
 // Modele/Passerelle.java                                                                  
@@ -38,13 +37,15 @@ public class Passerelle {
     
     protected LinkedList<Compteur> compteurs = new LinkedList<Compteur>();		//## link compteur 
     
-    protected ControleurPasserelle itsControleurPasserelle;		//## link itsControleurPasserelle 
+    protected ControleurDisplay itsControleurDisplay;		//## link itsControleurDisplay 
     
     protected Display itsDisplay;		//## link itsDisplay 
     
     protected Display itsDisplay_1;		//## link itsDisplay_1 
     
     protected LED itsLED;		//## link itsLED 
+    
+    protected LEDModel itsLEDModel;		//## link itsLEDModel 
     
     protected LED itsLED_1;		//## link itsLED_1 
     
@@ -66,9 +67,9 @@ public class Passerelle {
     	this.compteurs.add(c);
     }
     
-    //## operation getResumeParCompteur() 
-    public String getResumeParCompteur() {
-		StringBuilder sb = new StringBuilder();
+    //## operation getResumeParCompteurs() 
+    public String getResumeParCompteurs() {
+    	StringBuilder sb = new StringBuilder();
 		for(Compteur cpt : this.compteurs){
 			sb.append("---------------------------------\n");
 			sb.append(cpt.toString());
@@ -80,9 +81,9 @@ public class Passerelle {
     
     //## operation getTotalConsumption() 
     public double getTotalConsumption() {
-		double total = 0;
+    	double total = 0;
 		for(Compteur cpt : this.compteurs){
-			total += (cpt.getConso_heures_creuses() + cpt.getConso_heures_pleines());
+			total += (cpt.getConsoHeuresCreuses() + cpt.getConsoHeuresPleines());
 		}
 		return total;
     }
@@ -90,7 +91,7 @@ public class Passerelle {
     //## operation pushRRC() 
     public void pushRRC() {
         //#[ operation pushRRC() 
-        //#] // TODO
+        //#]
     }
     
     //## auto_generated 
@@ -135,36 +136,36 @@ public class Passerelle {
     }
     
     //## auto_generated 
-    public ControleurPasserelle getItsControleurPasserelle() {
-        return itsControleurPasserelle;
+    public ControleurDisplay getItsControleurDisplay() {
+        return itsControleurDisplay;
     }
     
     //## auto_generated 
-    public void __setItsControleurPasserelle(ControleurPasserelle p_ControleurPasserelle) {
-        itsControleurPasserelle = p_ControleurPasserelle;
+    public void __setItsControleurDisplay(ControleurDisplay p_ControleurDisplay) {
+        itsControleurDisplay = p_ControleurDisplay;
     }
     
     //## auto_generated 
-    public void _setItsControleurPasserelle(ControleurPasserelle p_ControleurPasserelle) {
-        if(itsControleurPasserelle != null)
+    public void _setItsControleurDisplay(ControleurDisplay p_ControleurDisplay) {
+        if(itsControleurDisplay != null)
             {
-                itsControleurPasserelle.__setItsPasserelle(null);
+                itsControleurDisplay.__setItsPasserelle(null);
             }
-        __setItsControleurPasserelle(p_ControleurPasserelle);
+        __setItsControleurDisplay(p_ControleurDisplay);
     }
     
     //## auto_generated 
-    public void setItsControleurPasserelle(ControleurPasserelle p_ControleurPasserelle) {
-        if(p_ControleurPasserelle != null)
+    public void setItsControleurDisplay(ControleurDisplay p_ControleurDisplay) {
+        if(p_ControleurDisplay != null)
             {
-                p_ControleurPasserelle._setItsPasserelle(this);
+                p_ControleurDisplay._setItsPasserelle(this);
             }
-        _setItsControleurPasserelle(p_ControleurPasserelle);
+        _setItsControleurDisplay(p_ControleurDisplay);
     }
     
     //## auto_generated 
-    public void _clearItsControleurPasserelle() {
-        itsControleurPasserelle = null;
+    public void _clearItsControleurDisplay() {
+        itsControleurDisplay = null;
     }
     
     //## auto_generated 
@@ -177,6 +178,23 @@ public class Passerelle {
         itsDisplay = p_Display;
     }
     
+    //## auto_generated 
+    public void _setItsDisplay(Display p_Display) {
+        if(itsDisplay != null)
+            {
+                itsDisplay.__setItsPasserelle(null);
+            }
+        __setItsDisplay(p_Display);
+    }
+    
+    //## auto_generated 
+    public void setItsDisplay(Display p_Display) {
+        if(p_Display != null)
+            {
+                p_Display._setItsPasserelle(this);
+            }
+        _setItsDisplay(p_Display);
+    }
     
     //## auto_generated 
     public void _clearItsDisplay() {
@@ -224,6 +242,16 @@ public class Passerelle {
     //## auto_generated 
     public void _clearItsLED() {
         itsLED = null;
+    }
+    
+    //## auto_generated 
+    public LEDModel getItsLEDModel() {
+        return itsLEDModel;
+    }
+    
+    //## auto_generated 
+    public void setItsLEDModel(LEDModel p_LEDModel) {
+        itsLEDModel = p_LEDModel;
     }
     
     //## auto_generated 

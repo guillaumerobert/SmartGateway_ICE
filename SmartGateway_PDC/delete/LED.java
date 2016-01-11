@@ -1,21 +1,19 @@
-/*********************************************************************
-	Rhapsody	: 8.1.3
-	Login		: Guillaume Robert
-	Component	: DefaultComponent
-	Configuration 	: DefaultConfig
-	Model Element	: LED
-//!	Generated Date	: Mon, 11, Jan 2016 
-	File Path	: DefaultComponent/DefaultConfig/Vue/LED.java
-*********************************************************************/
-
 package Vue;
 
 //## link itsPasserelle 
 import Modele.Passerelle;
-//## link itsControleurLED 
-import Controleur.ControleurLED;
-//## link itsControleurDisplay 
-import Controleur.ControleurDisplay;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+//## link itsControleurPasserelle 
+import Controleur.ControleurPasserelle;
+import java.awt.Canvas;
 
 //----------------------------------------------------------------------------
 // Vue/LED.java                                                                  
@@ -25,25 +23,40 @@ import Controleur.ControleurDisplay;
 
 
 //## class LED 
-public class LED {
+public class LED extends JPanel {
     
     protected boolean etatEnLigne;		//## attribute etatEnLigne 
     
     protected boolean etatReveil;		//## attribute etatReveil 
     
-    protected ControleurDisplay itsControleurDisplay;		//## link itsControleurDisplay 
+    protected ControleurPasserelle itsControleurPasserelle;		//## link itsControleurPasserelle 
     
-    protected ControleurLED itsControleurLED;		//## link itsControleurLED 
+    protected Passerelle itsPasserelle;//## link itsPasserelle 
     
-    protected Passerelle itsPasserelle;		//## link itsPasserelle 
-    
-    
+    private BorderLayout mainBorder;
+    private JPanel panelLed;
     // Constructors
     
     //## operation LED() 
-    public  LED() {
-        //#[ operation LED() 
-        //#]
+    public  LED() 
+    {
+    	setLayout(new BorderLayout(0, 0));
+    	
+    	Canvas canvas = new Canvas();
+    	add(canvas);
+    	
+    	panelLed = new JPanel();
+    	this.add(panelLed);
+    	panelLed.setLayout(new BorderLayout(0, 0));
+    	
+    	JLabel lblNewLabel = new JLabel("New label");
+    	panelLed.add(lblNewLabel, BorderLayout.NORTH);
+    }
+    
+    public void paintComponent(Graphics g)
+    {
+    	g.setColor(Color.RED);
+    	g.fillOval(0, 0,50,50);
     }
     
     //## operation miseAJourEtat() 
@@ -73,46 +86,36 @@ public class LED {
     }
     
     //## auto_generated 
-    public ControleurDisplay getItsControleurDisplay() {
-        return itsControleurDisplay;
+    public ControleurPasserelle getItsControleurPasserelle() {
+        return itsControleurPasserelle;
     }
     
     //## auto_generated 
-    public void __setItsControleurDisplay(ControleurDisplay p_ControleurDisplay) {
-        itsControleurDisplay = p_ControleurDisplay;
+    public void __setItsControleurPasserelle(ControleurPasserelle p_ControleurPasserelle) {
+        itsControleurPasserelle = p_ControleurPasserelle;
     }
     
     //## auto_generated 
-    public void _setItsControleurDisplay(ControleurDisplay p_ControleurDisplay) {
-        if(itsControleurDisplay != null)
+    public void _setItsControleurPasserelle(ControleurPasserelle p_ControleurPasserelle) {
+        if(itsControleurPasserelle != null)
             {
-                itsControleurDisplay.__setItsLED(null);
+                itsControleurPasserelle.__setItsLED(null);
             }
-        __setItsControleurDisplay(p_ControleurDisplay);
+        __setItsControleurPasserelle(p_ControleurPasserelle);
     }
     
     //## auto_generated 
-    public void setItsControleurDisplay(ControleurDisplay p_ControleurDisplay) {
-        if(p_ControleurDisplay != null)
+    public void setItsControleurPasserelle(ControleurPasserelle p_ControleurPasserelle) {
+        if(p_ControleurPasserelle != null)
             {
-                p_ControleurDisplay._setItsLED(this);
+                p_ControleurPasserelle._setItsLED(this);
             }
-        _setItsControleurDisplay(p_ControleurDisplay);
+        _setItsControleurPasserelle(p_ControleurPasserelle);
     }
     
     //## auto_generated 
-    public void _clearItsControleurDisplay() {
-        itsControleurDisplay = null;
-    }
-    
-    //## auto_generated 
-    public ControleurLED getItsControleurLED() {
-        return itsControleurLED;
-    }
-    
-    //## auto_generated 
-    public void setItsControleurLED(ControleurLED p_ControleurLED) {
-        itsControleurLED = p_ControleurLED;
+    public void _clearItsControleurPasserelle() {
+        itsControleurPasserelle = null;
     }
     
     //## auto_generated 

@@ -7,7 +7,8 @@ import java.awt.Font;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import Controleur.ControleurPasserelle;
+import Controleur.ControleurDisplay;
+import Controleur.ControleurLED;
 
 
 public class GlobalPane extends JPanel{
@@ -19,12 +20,14 @@ public class GlobalPane extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JPanel titlePanel;
 	private JLabel title;
-	private ControleurPasserelle ctrlPass;
+	private ControleurDisplay ctrlDisplay;
+	private ControleurLED ctrlLED;
 	private Display gatewayDisplay;
 
-	public GlobalPane(ControleurPasserelle ctrlP){
+	public GlobalPane(ControleurDisplay _ctrlDisplay, ControleurLED _ctrlLED){
 		
-		ctrlPass = ctrlP;
+		ctrlDisplay = _ctrlDisplay;
+		ctrlLED = _ctrlLED;
 		setLayout(new BorderLayout());
 		setOpaque(true);
 		this.setBackground(new Color(173,183,189));
@@ -48,7 +51,7 @@ public class GlobalPane extends JPanel{
 		titlePanel = new JPanel();
 		titlePanel.add(title);
 		
-		gatewayDisplay = new Display(ctrlPass);
+		gatewayDisplay = new Display(ctrlDisplay);
 		
 		// TODO : Panel LEDs
 		JPanel panelLed = new JPanel();

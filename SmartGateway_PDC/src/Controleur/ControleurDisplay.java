@@ -39,7 +39,8 @@ public class ControleurDisplay {
     // Constructors
     
     //## auto_generated 
-    public  ControleurDisplay() {
+    public  ControleurDisplay(Passerelle pass) {
+    	itsPasserelle = pass;
     }
     
     //## operation majDisplay() 

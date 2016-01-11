@@ -4,7 +4,7 @@
 	Component	: DefaultComponent
 	Configuration 	: DefaultConfig
 	Model Element	: Passerelle
-//!	Generated Date	: Mon, 11, Jan 2016 
+//!	Generated Date	: Wed, 6, Jan 2016 
 	File Path	: DefaultComponent/DefaultConfig/Modele/Passerelle.java
 *********************************************************************/
 
@@ -18,8 +18,9 @@ import java.util.*;
 import Vue.Display;
 //## link itsRRC 
 import Controleur.RRC;
-//## link itsControleurDisplay 
-import Controleur.ControleurDisplay;
+import Modele.Compteur;
+//## link itsControleurPasserelle 
+import Controleur.ControleurPasserelle;
 
 //----------------------------------------------------------------------------
 // Modele/Passerelle.java                                                                  
@@ -35,17 +36,15 @@ public class Passerelle {
     
     protected boolean recoitSignal;		//## attribute recoitSignal 
     
-    protected LinkedList<Compteur> compteur = new LinkedList<Compteur>();		//## link compteur 
+    protected LinkedList<Compteur> compteurs = new LinkedList<Compteur>();		//## link compteur 
     
-    protected ControleurDisplay itsControleurDisplay;		//## link itsControleurDisplay 
+    protected ControleurPasserelle itsControleurPasserelle;		//## link itsControleurPasserelle 
     
     protected Display itsDisplay;		//## link itsDisplay 
     
     protected Display itsDisplay_1;		//## link itsDisplay_1 
     
     protected LED itsLED;		//## link itsLED 
-    
-    protected LEDModel itsLEDModel;		//## link itsLEDModel 
     
     protected LED itsLED_1;		//## link itsLED_1 
     
@@ -56,8 +55,7 @@ public class Passerelle {
     
     //## operation Passerelle() 
     public  Passerelle() {
-        //#[ operation Passerelle() 
-        //#]
+    	this.compteurs = new LinkedList<Compteur>();
     }
     
     /**
@@ -65,26 +63,34 @@ public class Passerelle {
     */
     //## operation ajouterCompteur(Compteur) 
     public void ajouterCompteur(final Compteur c) {
-        //#[ operation ajouterCompteur(Compteur) 
-        //#]
+    	this.compteurs.add(c);
     }
     
-    //## operation getResumeParCompteurs() 
-    public String getResumeParCompteurs() {
-        //#[ operation getResumeParCompteurs() 
-        //#]
+    //## operation getResumeParCompteur() 
+    public String getResumeParCompteur() {
+		StringBuilder sb = new StringBuilder();
+		for(Compteur cpt : this.compteurs){
+			sb.append("---------------------------------\n");
+			sb.append(cpt.toString());
+			sb.append("\n");
+			sb.append("---------------------------------\n");
+		}
+		return sb.toString();
     }
     
     //## operation getTotalConsumption() 
     public double getTotalConsumption() {
-        //#[ operation getTotalConsumption() 
-        //#]
+		double total = 0;
+		for(Compteur cpt : this.compteurs){
+			total += (cpt.getConso_heures_creuses() + cpt.getConso_heures_pleines());
+		}
+		return total;
     }
     
     //## operation pushRRC() 
     public void pushRRC() {
         //#[ operation pushRRC() 
-        //#]
+        //#] // TODO
     }
     
     //## auto_generated 
@@ -109,56 +115,56 @@ public class Passerelle {
     
     //## auto_generated 
     public ListIterator<Compteur> getCompteur() {
-        ListIterator<Compteur> iter = compteur.listIterator();
+        ListIterator<Compteur> iter = compteurs.listIterator();
         return iter;
     }
     
     //## auto_generated 
     public void addCompteur(Compteur p_Compteur) {
-        compteur.add(p_Compteur);
+        compteurs.add(p_Compteur);
     }
     
     //## auto_generated 
     public void removeCompteur(Compteur p_Compteur) {
-        compteur.remove(p_Compteur);
+        compteurs.remove(p_Compteur);
     }
     
     //## auto_generated 
     public void clearCompteur() {
-        compteur.clear();
+        compteurs.clear();
     }
     
     //## auto_generated 
-    public ControleurDisplay getItsControleurDisplay() {
-        return itsControleurDisplay;
+    public ControleurPasserelle getItsControleurPasserelle() {
+        return itsControleurPasserelle;
     }
     
     //## auto_generated 
-    public void __setItsControleurDisplay(ControleurDisplay p_ControleurDisplay) {
-        itsControleurDisplay = p_ControleurDisplay;
+    public void __setItsControleurPasserelle(ControleurPasserelle p_ControleurPasserelle) {
+        itsControleurPasserelle = p_ControleurPasserelle;
     }
     
     //## auto_generated 
-    public void _setItsControleurDisplay(ControleurDisplay p_ControleurDisplay) {
-        if(itsControleurDisplay != null)
+    public void _setItsControleurPasserelle(ControleurPasserelle p_ControleurPasserelle) {
+        if(itsControleurPasserelle != null)
             {
-                itsControleurDisplay.__setItsPasserelle(null);
+                itsControleurPasserelle.__setItsPasserelle(null);
             }
-        __setItsControleurDisplay(p_ControleurDisplay);
+        __setItsControleurPasserelle(p_ControleurPasserelle);
     }
     
     //## auto_generated 
-    public void setItsControleurDisplay(ControleurDisplay p_ControleurDisplay) {
-        if(p_ControleurDisplay != null)
+    public void setItsControleurPasserelle(ControleurPasserelle p_ControleurPasserelle) {
+        if(p_ControleurPasserelle != null)
             {
-                p_ControleurDisplay._setItsPasserelle(this);
+                p_ControleurPasserelle._setItsPasserelle(this);
             }
-        _setItsControleurDisplay(p_ControleurDisplay);
+        _setItsControleurPasserelle(p_ControleurPasserelle);
     }
     
     //## auto_generated 
-    public void _clearItsControleurDisplay() {
-        itsControleurDisplay = null;
+    public void _clearItsControleurPasserelle() {
+        itsControleurPasserelle = null;
     }
     
     //## auto_generated 
@@ -171,23 +177,6 @@ public class Passerelle {
         itsDisplay = p_Display;
     }
     
-    //## auto_generated 
-    public void _setItsDisplay(Display p_Display) {
-        if(itsDisplay != null)
-            {
-                itsDisplay.__setItsPasserelle(null);
-            }
-        __setItsDisplay(p_Display);
-    }
-    
-    //## auto_generated 
-    public void setItsDisplay(Display p_Display) {
-        if(p_Display != null)
-            {
-                p_Display._setItsPasserelle(this);
-            }
-        _setItsDisplay(p_Display);
-    }
     
     //## auto_generated 
     public void _clearItsDisplay() {
@@ -235,16 +224,6 @@ public class Passerelle {
     //## auto_generated 
     public void _clearItsLED() {
         itsLED = null;
-    }
-    
-    //## auto_generated 
-    public LEDModel getItsLEDModel() {
-        return itsLEDModel;
-    }
-    
-    //## auto_generated 
-    public void setItsLEDModel(LEDModel p_LEDModel) {
-        itsLEDModel = p_LEDModel;
     }
     
     //## auto_generated 

@@ -4,14 +4,12 @@
 	Component	: DefaultComponent
 	Configuration 	: DefaultConfig
 	Model Element	: RRC
-//!	Generated Date	: Mon, 11, Jan 2016 
+//!	Generated Date	: Wed, 6, Jan 2016 
 	File Path	: DefaultComponent/DefaultConfig/Controleur/RRC.java
 *********************************************************************/
 
 package Controleur;
 
-//## link itsRRCModel 
-import Modele.RRCModel;
 //## link itsPasserelle 
 import Modele.Passerelle;
 //## link itsFournisseurEnergie 
@@ -33,8 +31,6 @@ public class RRC {
     
     protected Passerelle itsPasserelle;		//## link itsPasserelle 
     
-    protected RRCModel itsRRCModel;		//## link itsRRCModel 
-    
     
     // Constructors
     
@@ -50,9 +46,9 @@ public class RRC {
         //#]
     }
     
-    //## operation transmettreDonnees() 
-    public void transmettreDonnees() {
-        //#[ operation transmettreDonnees() 
+    //## operation editerFacture() 
+    public void editerFacture() {
+        //#[ operation editerFacture() 
         //#]
     }
     
@@ -130,16 +126,6 @@ public class RRC {
     //## auto_generated 
     public void _clearItsPasserelle() {
         itsPasserelle = null;
-    }
-    
-    //## auto_generated 
-    public RRCModel getItsRRCModel() {
-        return itsRRCModel;
-    }
-    
-    //## auto_generated 
-    public void setItsRRCModel(RRCModel p_RRCModel) {
-        itsRRCModel = p_RRCModel;
     }
     
 }
