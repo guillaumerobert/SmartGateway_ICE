@@ -51,12 +51,15 @@ public class Passerelle {
     
     protected RRC itsRRC;		//## link itsRRC 
     
+    protected RRCModel itsRRCModel;		//## link itsRRCModel 
+    
     
     // Constructors
     
     //## operation Passerelle() 
-    public  Passerelle() {
-    	this.compteurs = new LinkedList<Compteur>();
+    public  Passerelle(RRCModel rrcm) {
+        this.compteurs = new LinkedList<Compteur>();
+        itsRRCModel = rrcm;
     }
     
     /**
@@ -64,10 +67,10 @@ public class Passerelle {
     */
     //## operation ajouterCompteur(Compteur) 
     public void ajouterCompteur(final Compteur c) {
-    	this.compteurs.add(c);
+        this.compteurs.add(c);
     }
     
-    //## operation getResumeParCompteurs() 
+   //## operation getResumeParCompteurs() 
     public String getResumeParCompteurs() {
     	StringBuilder sb = new StringBuilder();
 		for(Compteur cpt : this.compteurs){
@@ -118,6 +121,11 @@ public class Passerelle {
     public ListIterator<Compteur> getCompteur() {
         ListIterator<Compteur> iter = compteurs.listIterator();
         return iter;
+    }
+    
+    // AJOUT
+    public Compteur getCompteurNumber(int pNum) {
+        return compteurs.get(pNum);
     }
     
     //## auto_generated 
@@ -295,6 +303,39 @@ public class Passerelle {
     //## auto_generated 
     public void _clearItsRRC() {
         itsRRC = null;
+    }
+    
+    //## auto_generated 
+    public RRCModel getItsRRCModel() {
+        return itsRRCModel;
+    }
+    
+    //## auto_generated 
+    public void __setItsRRCModel(RRCModel p_RRCModel) {
+        itsRRCModel = p_RRCModel;
+    }
+    
+    //## auto_generated 
+    public void _setItsRRCModel(RRCModel p_RRCModel) {
+        if(itsRRCModel != null)
+            {
+                itsRRCModel._removeItsPasserelle_1(this);
+            }
+        __setItsRRCModel(p_RRCModel);
+    }
+    
+    //## auto_generated 
+    public void setItsRRCModel(RRCModel p_RRCModel) {
+        if(p_RRCModel != null)
+            {
+                p_RRCModel._addItsPasserelle_1(this);
+            }
+        _setItsRRCModel(p_RRCModel);
+    }
+    
+    //## auto_generated 
+    public void _clearItsRRCModel() {
+        itsRRCModel = null;
     }
     
 }

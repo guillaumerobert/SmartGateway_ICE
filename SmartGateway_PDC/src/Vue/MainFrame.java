@@ -8,6 +8,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import Controleur.ControleurFournisseur;
+import Controleur.RRC;
+import Modele.Passerelle;
 
 /**
  * 
@@ -26,10 +28,16 @@ public class MainFrame extends JFrame {
 	private JMenu menuEditer;
 	private JMenuItem editer;
 	private ParameterFrame pf;
-	private ControleurFournisseur ctrlF;
+	private ControleurFournisseur ctrlFournisseur;
+	private RRC rrc;
+	private Passerelle passerelle;
 	
-	public MainFrame(ControleurFournisseur _ctrlFournisseur){
-		this.ctrlF = _ctrlFournisseur;
+	public MainFrame(RRC _rrc, ControleurFournisseur _ctrlFournisseur, Passerelle _gateway){
+		
+		this.ctrlFournisseur = _ctrlFournisseur;
+		this.passerelle = _gateway;
+		this.rrc = _rrc;
+		
 		this.menuBar = new JMenuBar();
 		this.menuEditer = new JMenu("Actions");
 		this.editer = new JMenuItem("Editer facture");
@@ -42,11 +50,10 @@ public class MainFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				pf = new ParameterFrame(ctrlF.getItsFournisseurEnergie());
+				pf = new ParameterFrame(rrc, passerelle, ctrlFournisseur);
 				
-				pf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				pf.setSize(400, 200);
-				pf.setResizable(false);
+				pf.setSize(500, 500);
+				//pf.setResizable(false);
 				pf.setVisible(true);
 			}
 		});

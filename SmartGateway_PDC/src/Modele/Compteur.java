@@ -40,11 +40,12 @@ public class Compteur {
     // Constructors
     
     //## operation Compteur() 
-    public  Compteur() {
+    public  Compteur(Consommateur _conso) {
     	this.generateur = new Random();
 		this.numeroCompteur = this.generateur.nextInt();
 		this.rangeMin = 100.0;
 		this.rangeMax = 10000.0;
+		this.itsConsommateur = _conso;
 		
 		this.consoHeuresCreuses = rangeMin + (rangeMax - rangeMin) * generateur.nextDouble();
 		this.consoHeuresPleines = rangeMin + (rangeMax - rangeMin) * generateur.nextDouble();

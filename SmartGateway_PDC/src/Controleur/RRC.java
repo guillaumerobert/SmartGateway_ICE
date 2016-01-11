@@ -17,6 +17,13 @@ import Modele.Passerelle;
 //## link itsFournisseurEnergie 
 import Modele.FournisseurEnergie;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Vector;
+
+import Modele.Compteur;
+import Modele.Consommateur;
+
 //----------------------------------------------------------------------------
 // Controleur/RRC.java                                                                  
 //----------------------------------------------------------------------------
@@ -39,9 +46,8 @@ public class RRC {
     // Constructors
     
     //## operation RRC() 
-    public  RRC() {
-        //#[ operation RRC() 
-        //#]
+    public  RRC(RRCModel _rrcm) {
+    	itsRRCModel = _rrcm;
     }
     
     //## operation demandeDonnees() 
@@ -142,6 +148,21 @@ public class RRC {
         itsRRCModel = p_RRCModel;
     }
     
+ // AJOUT
+    public Vector<Consommateur> getAllConsummers(Passerelle _gateway) {
+   
+    	Vector<Consommateur> listeConso = new Vector<>(); 	
+    	Iterator<Compteur> it = _gateway.getCompteur();
+    	Consommateur c;
+    	
+        while(it.hasNext())
+        {
+        	c = it.next().getItsConsommateur();
+    		listeConso.add(c);
+    	}
+        
+        return listeConso;
+    }
 }
 /*********************************************************************
 	File Path	: DefaultComponent/DefaultConfig/Controleur/RRC.java
