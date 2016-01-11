@@ -1,19 +1,19 @@
-/*********************************************************************
-	Rhapsody	: 8.1.3
-	Login		: Guillaume Robert
-	Component	: DefaultComponent
-	Configuration 	: DefaultConfig
-	Model Element	: LED
-//!	Generated Date	: Wed, 6, Jan 2016 
-	File Path	: DefaultComponent/DefaultConfig/Vue/LED.java
-*********************************************************************/
-
 package Vue;
 
 //## link itsPasserelle 
 import Modele.Passerelle;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.GridLayout;
+
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 //## link itsControleurPasserelle 
 import Controleur.ControleurPasserelle;
+import java.awt.Canvas;
 
 //----------------------------------------------------------------------------
 // Vue/LED.java                                                                  
@@ -23,7 +23,7 @@ import Controleur.ControleurPasserelle;
 
 
 //## class LED 
-public class LED {
+public class LED extends JPanel {
     
     protected boolean etatEnLigne;		//## attribute etatEnLigne 
     
@@ -31,15 +31,32 @@ public class LED {
     
     protected ControleurPasserelle itsControleurPasserelle;		//## link itsControleurPasserelle 
     
-    protected Passerelle itsPasserelle;		//## link itsPasserelle 
+    protected Passerelle itsPasserelle;//## link itsPasserelle 
     
-    
+    private BorderLayout mainBorder;
+    private JPanel panelLed;
     // Constructors
     
     //## operation LED() 
-    public  LED() {
-        //#[ operation LED() 
-        //#]
+    public  LED() 
+    {
+    	setLayout(new BorderLayout(0, 0));
+    	
+    	Canvas canvas = new Canvas();
+    	add(canvas);
+    	
+    	panelLed = new JPanel();
+    	this.add(panelLed);
+    	panelLed.setLayout(new BorderLayout(0, 0));
+    	
+    	JLabel lblNewLabel = new JLabel("New label");
+    	panelLed.add(lblNewLabel, BorderLayout.NORTH);
+    }
+    
+    public void paintComponent(Graphics g)
+    {
+    	g.setColor(Color.RED);
+    	g.fillOval(0, 0,50,50);
     }
     
     //## operation miseAJourEtat() 
