@@ -10,7 +10,7 @@
 
 package Controleur;
 
-//## link itsUtilisateur 
+import java.util.ArrayList;
 import Modele.Utilisateur;
 
 //----------------------------------------------------------------------------
@@ -23,23 +23,38 @@ import Modele.Utilisateur;
 //## class ControleLogin 
 public class ControleLogin {
     
-    protected Utilisateur itsUtilisateur;		//## link itsUtilisateur 
+    //protected Utilisateur itsUtilisateur;		//## link itsUtilisateur 
+    
+    protected ArrayList<Utilisateur> utilisateurs = new ArrayList<>();		//## link Utilisateur 
     
     
     // Constructors
     
     //## auto_generated 
-    public  ControleLogin() {
+    public  ControleLogin(ArrayList<Utilisateur> pUsers) {
+    	utilisateurs = pUsers;
     }
     
     //## auto_generated 
-    public Utilisateur getItsUtilisateur() {
+    /*public Utilisateur getItsUtilisateur() {
         return itsUtilisateur;
     }
     
     //## auto_generated 
     public void setItsUtilisateur(Utilisateur p_Utilisateur) {
         itsUtilisateur = p_Utilisateur;
+    }*/
+    
+    // AJOUT
+    public Utilisateur login(String _pLog, String _pPass) {
+    	Utilisateur uNOK = null;
+    	
+		for (Utilisateur uOK : utilisateurs) {
+			if ((uOK.getLogin().equals(_pLog)) && (uOK.getMdp().equals(_pPass)))
+				return uOK;	
+		}
+    	
+		return uNOK;
     }
     
 }

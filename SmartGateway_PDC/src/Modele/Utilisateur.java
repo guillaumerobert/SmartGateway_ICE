@@ -36,6 +36,11 @@ public class Utilisateur {
     public  Utilisateur() {
     }
     
+    public  Utilisateur(String _login, String _mdp) {
+    	this.login = _login;
+    	this.mdp = _mdp;
+    }
+    
     //## auto_generated 
     public String getLogin() {
         return login;
