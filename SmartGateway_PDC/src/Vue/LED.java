@@ -51,8 +51,6 @@ public class LED extends JPanel {
     
     protected Passerelle itsPasserelle;		//## link itsPasserelle 
     
-    
-
     private BorderLayout mainBorder;
     private JPanel panelCentral;
     private JPanel panelLed;
@@ -92,9 +90,15 @@ public class LED extends JPanel {
 
     
     //## operation miseAJourEtat() 
-    public void miseAJourEtat() {
-        //#[ operation miseAJourEtat() 
-        //#]
+    public void miseAJourEtat() 
+    {
+    	
+    	
+    }
+    
+    public void miseAJourStatut() 
+    {
+    	
     }
     
     //## auto_generated 

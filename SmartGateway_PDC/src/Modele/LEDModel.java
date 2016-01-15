@@ -30,15 +30,16 @@ public class LEDModel {
     
     protected Color couleurEstReveilleOn;		//## attribute couleurEstReveilleOn 
     
-    protected int estEnLigne;		//## attribute estEnLigne 
+    protected boolean estEnLigne;		//## attribute estEnLigne 
     
-    protected int estReveille;		//## attribute estReveille 
+    protected boolean estReveille;		//## attribute estReveille 
     
     
     // Constructors
     
     //## auto_generated 
     public  LEDModel() {
+    	
     }
     
     //## auto_generated 
@@ -82,22 +83,22 @@ public class LEDModel {
     }
     
     //## auto_generated 
-    public int getEstEnLigne() {
+    public boolean getEstEnLigne() {
         return estEnLigne;
     }
     
     //## auto_generated 
-    public void setEstEnLigne(int p_estEnLigne) {
+    public void setEstEnLigne(boolean p_estEnLigne) {
         estEnLigne = p_estEnLigne;
     }
     
     //## auto_generated 
-    public int getEstReveille() {
+    public boolean getEstReveille() {
         return estReveille;
     }
     
     //## auto_generated 
-    public void setEstReveille(int p_estReveille) {
+    public void setEstReveille(boolean p_estReveille) {
         estReveille = p_estReveille;
     }
     

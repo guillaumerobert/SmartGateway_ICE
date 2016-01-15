@@ -52,6 +52,7 @@ public class Passerelle {
     protected RRC itsRRC;		//## link itsRRC 
     
     
+    
     // Constructors
     
     //## operation Passerelle() 
