@@ -40,11 +40,11 @@ public class Application {
 		FournisseurEnergie edf = new FournisseurEnergie("EDF", 0.25);
 		FournisseurEnergie veolia = new FournisseurEnergie("VEOLIA", 0.32);
 		
-		gateway.ajouterCompteur(new Compteur(new Consommateur("Billy", "Joe", edf)));
-		gateway.ajouterCompteur(new Compteur(new Consommateur("Jackie", "Museau", veolia)));
-		gateway.ajouterCompteur(new Compteur(new Consommateur("Bertrand", "Pet", edf)));
-		gateway.ajouterCompteur(new Compteur(new Consommateur("Sarah", "Meuh", veolia)));
-		gateway.ajouterCompteur(new Compteur(new Consommateur("Patrick", "Vinasse", edf)));
+		gateway.ajouterCompteur(new Compteur(new Consommateur("Billy", "Joe", "bjo", "bjoe", "3 avenue de paris", edf, 0)));
+		gateway.ajouterCompteur(new Compteur(new Consommateur("Jackie", "Museau", "jmu", "jmu", "1 avenue de lisbonne", veolia, 1)));
+		gateway.ajouterCompteur(new Compteur(new Consommateur("Bertrand", "Pet", "bpe", "bpet", "5 avenue de madrid", edf, 1)));
+		gateway.ajouterCompteur(new Compteur(new Consommateur("Sarah", "Meuh", "sme", "sme", "5 route de lune", veolia, 0)));
+		gateway.ajouterCompteur(new Compteur(new Consommateur("Patrick", "Vinasse", "pvi", "pvi", "12 av de mars", veolia, 0)));
 		
 		ControleurLED ctrlLED = new ControleurLED();
 		ControleurFournisseur ctrlFournisseur = new ControleurFournisseur(edf);
