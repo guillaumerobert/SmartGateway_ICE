@@ -34,7 +34,11 @@ public class ControleurFournisseur {
     public  ControleurFournisseur() {
     }
     
-    //## operation editerFacture() 
+    public ControleurFournisseur(FournisseurEnergie _f) {
+    	itsFournisseurEnergie = _f;
+	}
+
+	//## operation editerFacture() 
     public void editerFacture() {
         //#[ operation editerFacture() 
         //#]

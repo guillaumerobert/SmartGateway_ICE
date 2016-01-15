@@ -5,7 +5,10 @@ import javax.swing.UIManager;
 import javax.swing.UIManager.*;
 
 import Modele.Compteur;
+import Modele.Consommateur;
+import Modele.FournisseurEnergie;
 import Modele.Passerelle;
+import Modele.RRCModel;
 import Vue.GlobalPane;
 import Vue.MainFrame;
 
@@ -31,17 +34,25 @@ public class Application {
 		    System.out.println("LookAndFeel indisponible !");
 		}
 		
-		Passerelle gateway = new Passerelle();
-		for(int i=0;i<10;i++){
-			gateway.ajouterCompteur(new Compteur());
-		}
+		RRCModel rrcm = new RRCModel();
+		Passerelle gateway = new Passerelle(rrcm);
+		
+		FournisseurEnergie edf = new FournisseurEnergie("EDF", 0.25);
+		FournisseurEnergie veolia = new FournisseurEnergie("VEOLIA", 0.32);
+		
+		gateway.ajouterCompteur(new Compteur(new Consommateur("Billy", "Joe", edf)));
+		gateway.ajouterCompteur(new Compteur(new Consommateur("Jackie", "Museau", veolia)));
+		gateway.ajouterCompteur(new Compteur(new Consommateur("Bertrand", "Pet", edf)));
+		gateway.ajouterCompteur(new Compteur(new Consommateur("Sarah", "Meuh", veolia)));
+		gateway.ajouterCompteur(new Compteur(new Consommateur("Patrick", "Vinasse", edf)));
 		
 		ControleurLED ctrlLED = new ControleurLED();
-		ControleurFournisseur ctrlFournisseur = new ControleurFournisseur();
+		ControleurFournisseur ctrlFournisseur = new ControleurFournisseur(edf);
 		ControleurDisplay ctrlDisplay = new ControleurDisplay(gateway);
-
+		RRC rrc = new RRC(rrcm); // classe RRC a regénérer selon v3
+		
 		GlobalPane gp = new GlobalPane(ctrlDisplay, ctrlLED);
-		MainFrame fen = new MainFrame(ctrlFournisseur);
+		MainFrame fen = new MainFrame(rrc, ctrlFournisseur, gateway);
 		
 		fen.setContentPane(gp);
 		fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

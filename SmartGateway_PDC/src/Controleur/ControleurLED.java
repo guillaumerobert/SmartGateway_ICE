@@ -10,6 +10,7 @@
 
 package Controleur;
 
+//## link itsLEDModel 
 import Modele.LEDModel;
 //## link itsPasserelle 
 import Modele.Passerelle;
@@ -24,23 +25,37 @@ import Modele.Passerelle;
 //## class ControleurLED 
 public class ControleurLED {
     
-    protected Passerelle itsPasserelle;  //## link itsPasserelle 
+    protected LEDModel itsLEDModel;		//## link itsLEDModel 
+    
+    protected Passerelle itsPasserelle;		//## link itsPasserelle 
+    
     
     // Constructors
     
     //## auto_generated 
-    public  ControleurLED() 
-    {
-    	
+    public  ControleurLED() {
     }
     
     //## operation majEtat() 
-    public void majEtat() 
-    {
+    public void majEtat() {
+        //#[ operation majEtat() 
+        //#]
     }
     
     //## operation majStatut() 
     public void majStatut() {
+        //#[ operation majStatut() 
+        //#]
+    }
+    
+    //## auto_generated 
+    public LEDModel getItsLEDModel() {
+        return itsLEDModel;
+    }
+    
+    //## auto_generated 
+    public void setItsLEDModel(LEDModel p_LEDModel) {
+        itsLEDModel = p_LEDModel;
     }
     
     //## auto_generated 

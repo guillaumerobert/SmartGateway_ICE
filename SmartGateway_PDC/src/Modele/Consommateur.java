@@ -35,10 +35,18 @@ public class Consommateur {
     // Constructors
     
     //## auto_generated 
-    public  Consommateur() {
+    public  Consommateur(String _nom, String _prenom) {
+    	nom = _nom;
+    	prenom = _prenom;
     }
     
-    //## auto_generated 
+    public Consommateur(String _nom, String _prenom, FournisseurEnergie _fe) {
+    	nom = _nom;
+    	prenom = _prenom;
+    	itsFournisseurEnergie = _fe;
+	}
+
+	//## auto_generated 
     public String getAdresse() {
         return adresse;
     }
@@ -134,6 +142,9 @@ public class Consommateur {
         itsFournisseurEnergie = null;
     }
     
+    public String toString() {
+    	return this.nom + " " + this.prenom;
+    }
 }
 /*********************************************************************
 	File Path	: DefaultComponent/DefaultConfig/Modele/Consommateur.java
