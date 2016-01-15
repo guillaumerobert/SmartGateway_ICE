@@ -1,6 +1,7 @@
 package Controleur;
 
-import javax.swing.JFrame;
+import java.util.ArrayList;
+
 import javax.swing.UIManager;
 import javax.swing.UIManager.*;
 
@@ -9,8 +10,10 @@ import Modele.Consommateur;
 import Modele.FournisseurEnergie;
 import Modele.Passerelle;
 import Modele.RRCModel;
+import Modele.Utilisateur;
 import Vue.GlobalPane;
 import Vue.MainFrame;
+import Vue.VueLogin;
 
 public class Application { 
 	/**
@@ -22,6 +25,8 @@ public class Application {
 	
 	
 	public static void main(String[] args) {
+		
+		ArrayList<Utilisateur> utilisateurs = new ArrayList<>();
 		
 		try {
 		    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
@@ -40,25 +45,44 @@ public class Application {
 		FournisseurEnergie edf = new FournisseurEnergie("EDF", 0.25);
 		FournisseurEnergie veolia = new FournisseurEnergie("VEOLIA", 0.32);
 		
-		gateway.ajouterCompteur(new Compteur(new Consommateur("Billy", "Joe", "bjo", "bjoe", "3 avenue de paris", edf, 0)));
-		gateway.ajouterCompteur(new Compteur(new Consommateur("Jackie", "Museau", "jmu", "jmu", "1 avenue de lisbonne", veolia, 1)));
-		gateway.ajouterCompteur(new Compteur(new Consommateur("Bertrand", "Pet", "bpe", "bpet", "5 avenue de madrid", edf, 1)));
-		gateway.ajouterCompteur(new Compteur(new Consommateur("Sarah", "Meuh", "sme", "sme", "5 route de lune", veolia, 0)));
-		gateway.ajouterCompteur(new Compteur(new Consommateur("Patrick", "Vinasse", "pvi", "pvi", "12 av de mars", veolia, 0)));
+		Consommateur c1 = new Consommateur("Billy", "Joe", "bjo", "bjo", "3 avenue de paris", edf, 0);
+		Consommateur c2 = new Consommateur("Jackie", "Museau", "jmu", "jmu", "1 avenue de lisbonne", veolia, 1);
+		Consommateur c3 = new Consommateur("Bertrand", "Pet", "bpe", "bpe", "5 avenue de madrid", edf, 1);
+		Consommateur c4 = new Consommateur("Sarah", "Meuh", "sme", "sme", "5 route de lune", veolia, 0);
+		Consommateur c5 = new Consommateur("Patrick", "Vinasse", "pvi", "pvi", "12 av de mars", veolia, 0);
+		
+		utilisateurs.add(c1);
+		utilisateurs.add(c2);
+		utilisateurs.add(c3);
+		utilisateurs.add(c4);
+		utilisateurs.add(c5);
+		
+		//utilisateurs.add(edf);
+		//utilisateurs.add(veolia);
+		
+		gateway.ajouterCompteur(new Compteur(c1));
+		gateway.ajouterCompteur(new Compteur(c2));
+		gateway.ajouterCompteur(new Compteur(c3));
+		gateway.ajouterCompteur(new Compteur(c4));
+		gateway.ajouterCompteur(new Compteur(c5));
 		
 		ControleurLED ctrlLED = new ControleurLED();
+		ControleLogin ctrlLog = new ControleLogin(utilisateurs);	
 		ControleurFournisseur ctrlFournisseur = new ControleurFournisseur(edf);
 		ControleurDisplay ctrlDisplay = new ControleurDisplay(gateway);
 		RRC rrc = new RRC(rrcm); // classe RRC a regénérer selon v3
 		
-		GlobalPane gp = new GlobalPane(ctrlDisplay, ctrlLED);
+		/*GlobalPane gp = new GlobalPane(ctrlDisplay, ctrlLED);
 		MainFrame fen = new MainFrame(rrc, ctrlFournisseur, gateway);
 		
 		fen.setContentPane(gp);
 		fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		fen.pack();
 		fen.repaint();
-		fen.setVisible(true);
+		fen.setVisible(true);*/
+	
+		VueLogin fenLog = new VueLogin(ctrlLog);
+		fenLog.setVisible(true);
 	}
 
 }

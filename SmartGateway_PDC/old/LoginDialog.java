@@ -1,62 +1,27 @@
-/*********************************************************************
-	Rhapsody	: 8.1.3
-	Login		: Guillaume Robert
-	Component	: DefaultComponent
-	Configuration 	: DefaultConfig
-	Model Element	: VueLogin
-//!	Generated Date	: Fri, 15, Jan 2016 
-	File Path	: DefaultComponent/DefaultConfig/Vue/VueLogin.java
-*********************************************************************/
-
 package Vue;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.*;
 
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-
-//## link itsControleLogin 
 import Controleur.ControleLogin;
 import Modele.Utilisateur;
 
-//----------------------------------------------------------------------------
-// Vue/VueLogin.java                                                                  
-//----------------------------------------------------------------------------
+import java.awt.*;
+import java.awt.event.*;
 
-//## package Vue 
-
-
-//## class VueLogin 
-public class VueLogin extends JDialog {
-    
-    /**
+public class LoginDialog extends JDialog {
+   /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
-	protected ControleLogin itsControleLogin;		//## link itsControleLogin 
-
-    private JTextField login;
+	
+	private JTextField login;
 	private JTextField password;
-    
 	private JPanel pan_principal, pan_label, pan_textField, pan_button;
 	private JButton ok, annuler;
 	private Utilisateur logger;
 	private ControleLogin ctrlL;
    
-	
-	// Constructors
-    
-    //## auto_generated 
-	
-	public VueLogin(ControleLogin _ctrlL) {
+	public LoginDialog(ControleLogin _ctrlL) {
 		this.ctrlL = _ctrlL;
 		init();
 	}
@@ -83,7 +48,6 @@ public class VueLogin extends JDialog {
     	
     	if (logger != null) {
     		System.out.println("YES existe");
-    		// Frame Client a appeler
     	} else {
     		System.err.println("N existe pas");
     	}
@@ -115,20 +79,5 @@ public class VueLogin extends JDialog {
      
       this.setContentPane(pan_principal);
       this.pack();
-   }
-	
-	//## auto_generated 
-    public ControleLogin getItsControleLogin() {
-        return itsControleLogin;
-    }
-    
-    //## auto_generated 
-    public void setItsControleLogin(ControleLogin p_ControleLogin) {
-        itsControleLogin = p_ControleLogin;
-    }
-    
+   } 
 }
-/*********************************************************************
-	File Path	: DefaultComponent/DefaultConfig/Vue/VueLogin.java
-*********************************************************************/
-
