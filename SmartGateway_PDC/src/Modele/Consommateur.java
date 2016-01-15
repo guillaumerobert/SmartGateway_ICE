@@ -4,7 +4,7 @@
 	Component	: DefaultComponent
 	Configuration 	: DefaultConfig
 	Model Element	: Consommateur
-//!	Generated Date	: Mon, 11, Jan 2016 
+//!	Generated Date	: Fri, 15, Jan 2016 
 	File Path	: DefaultComponent/DefaultConfig/Modele/Consommateur.java
 *********************************************************************/
 
@@ -19,13 +19,11 @@ package Modele;
 
 
 //## class Consommateur 
-public class Consommateur {
+public class Consommateur extends Utilisateur {
     
     protected String adresse;		//## attribute adresse 
     
-    protected String nom;		//## attribute nom 
-    
-    protected String prenom;		//## attribute prenom 
+    protected int nivAuthorisation;		//## attribute nivAuthorisation 
     
     protected Compteur itsCompteur;		//## link itsCompteur 
     
@@ -35,18 +33,18 @@ public class Consommateur {
     // Constructors
     
     //## auto_generated 
-    public  Consommateur(String _nom, String _prenom) {
-    	nom = _nom;
-    	prenom = _prenom;
-    }
-    
-    public Consommateur(String _nom, String _prenom, FournisseurEnergie _fe) {
-    	nom = _nom;
-    	prenom = _prenom;
+    public Consommateur(String _nom, String _pren, String _login, String _mdp, String _adr, FournisseurEnergie _fe, int _aut) {
+    	super.nom = _nom;
+    	super.prenom = _pren;
+    	super.login = _login;
+    	super.mdp = _mdp;
+    	
     	itsFournisseurEnergie = _fe;
+    	adresse = _adr;
+    	nivAuthorisation = _aut;
 	}
-
-	//## auto_generated 
+    
+    //## auto_generated 
     public String getAdresse() {
         return adresse;
     }
@@ -57,23 +55,13 @@ public class Consommateur {
     }
     
     //## auto_generated 
-    public String getNom() {
-        return nom;
+    public int getNivAuthorisation() {
+        return nivAuthorisation;
     }
     
     //## auto_generated 
-    public void setNom(String p_nom) {
-        nom = p_nom;
-    }
-    
-    //## auto_generated 
-    public String getPrenom() {
-        return prenom;
-    }
-    
-    //## auto_generated 
-    public void setPrenom(String p_prenom) {
-        prenom = p_prenom;
+    public void setNivAuthorisation(int p_nivAuthorisation) {
+        nivAuthorisation = p_nivAuthorisation;
     }
     
     //## auto_generated 
@@ -142,9 +130,6 @@ public class Consommateur {
         itsFournisseurEnergie = null;
     }
     
-    public String toString() {
-    	return this.nom + " " + this.prenom;
-    }
 }
 /*********************************************************************
 	File Path	: DefaultComponent/DefaultConfig/Modele/Consommateur.java

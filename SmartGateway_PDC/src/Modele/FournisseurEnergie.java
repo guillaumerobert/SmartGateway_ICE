@@ -23,7 +23,7 @@ import Controleur.RRC;
 
 
 //## class FournisseurEnergie 
-public class FournisseurEnergie {
+public class FournisseurEnergie extends Utilisateur {
     
     protected String nom;		//## attribute nom 
     
