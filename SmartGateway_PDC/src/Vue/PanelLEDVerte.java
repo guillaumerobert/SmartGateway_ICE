@@ -8,6 +8,11 @@ import javax.swing.JPanel;
 
 public class PanelLEDVerte extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public PanelLEDVerte() 
 	{	
 		this.setPreferredSize(new Dimension(181, 195));

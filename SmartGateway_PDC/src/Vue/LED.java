@@ -20,15 +20,12 @@ import Controleur.ControleurDisplay;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Graphics;
-import java.awt.GridLayout;
-
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
-import java.awt.Canvas;
-import java.awt.Font;
 import javax.swing.SwingConstants;
+
+import java.awt.Font;
+import java.awt.GridLayout;
 import java.awt.FlowLayout;
 
 //----------------------------------------------------------------------------
@@ -41,7 +38,12 @@ import java.awt.FlowLayout;
 //## class LED 
 public class LED extends JPanel {
     
-    protected boolean etatEnLigne;		//## attribute etatEnLigne 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected boolean etatEnLigne;		//## attribute etatEnLigne 
     
     protected boolean etatReveil;		//## attribute etatReveil 
     

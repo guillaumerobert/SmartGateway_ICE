@@ -17,7 +17,6 @@ import Modele.Passerelle;
 //## link itsFournisseurEnergie 
 import Modele.FournisseurEnergie;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 

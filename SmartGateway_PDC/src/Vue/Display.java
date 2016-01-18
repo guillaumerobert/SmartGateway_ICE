@@ -35,7 +35,12 @@ import Controleur.ControleurDisplay;
 //## class Display 
 public class Display extends JPanel {
     
-    protected ControleurDisplay itsControleurDisplay;		//## link itsControleurDisplay 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected ControleurDisplay itsControleurDisplay;		//## link itsControleurDisplay 
     
     protected ControleurDisplay itsControleurDisplay_1;		//## link itsControleurDisplay_1 
     

@@ -30,7 +30,12 @@ import javax.swing.JPanel;
 //## class Facture 
 public class Facture extends JPanel {
     
-    protected ControleurFournisseur itsControleurFournisseur;		//## link itsControleurFournisseur 
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected ControleurFournisseur itsControleurFournisseur;		//## link itsControleurFournisseur 
     
 	private JLabel titre,nomCli,conso,compteur,releveHC,releveHP,releveTotal,coutUnitaire,totalTTC,aReglerAvant;
 	private JPanel corpsFacture;
