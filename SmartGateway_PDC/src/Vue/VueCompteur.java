@@ -32,7 +32,12 @@ import java.awt.Font;
 //## class VueCompteur 
 public class VueCompteur extends JFrame {
     
-	 protected ControleurDisplay itsControleurDisplay;		//## link itsControleurDisplay
+	 /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected ControleurDisplay itsControleurDisplay;		//## link itsControleurDisplay
 	    
     private String numCompteur;
     private String consHeuresCreuses;
