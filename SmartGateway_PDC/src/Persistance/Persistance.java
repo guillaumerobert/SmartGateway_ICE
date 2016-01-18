@@ -10,7 +10,9 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import Modele.Administrateur;
 import Modele.Compteur;
+import Modele.Consommateur;
 import Modele.FournisseurEnergie;
 
 public class Persistance{
@@ -18,21 +20,28 @@ public class Persistance{
 	private File saveCompteurs;
 	private File saveConsommateurs;
 	private File saveFournisseurs;
+	private File saveAdmins;
 
 	private ObjectOutputStream oosSaveFournisseurs;
 	private ObjectOutputStream oosSaveCompteur;
 	private ObjectOutputStream oosSaveConsommateurs;
+	private ObjectOutputStream oosSaveAdmins;
  
 	private ObjectInputStream oisSaveConsomamteurs;
 	private ObjectInputStream oisSaveFournisseurs;
 	private ObjectInputStream oisSaveCompteur;
+	private ObjectInputStream oisSaveAdmins;
 	
 	public Persistance() throws FileNotFoundException, IOException{
-
+		
+		this.saveAdmins = new File("C:/Users/Guillaume Robert/git/SmartGatewayICE_/SmartGateway_PDC/src/Persistance/SaveAdmins");
 		this.saveCompteurs = new File("C:/Users/Guillaume Robert/git/SmartGatewayICE_/SmartGateway_PDC/src/Persistance/SaveCompteur"); 
 		this.saveConsommateurs = new File("C:/Users/Guillaume Robert/git/SmartGatewayICE_/SmartGateway_PDC/src/Persistance/SaveConsommateur");
 		this.saveFournisseurs = new File("C:/Users/Guillaume Robert/git/SmartGatewayICE_/SmartGateway_PDC/src/Persistance/SaveFournisseur"); 
-
+		
+		this.oosSaveAdmins = new ObjectOutputStream(new FileOutputStream(saveAdmins)) ;
+		this.oisSaveAdmins = new ObjectInputStream(new FileInputStream(saveAdmins)) ;
+		
 		this.oosSaveFournisseurs = new ObjectOutputStream(new FileOutputStream(saveFournisseurs)) ;
 		this.oisSaveFournisseurs = new ObjectInputStream(new FileInputStream(saveFournisseurs)) ;
 
@@ -53,6 +62,16 @@ public class Persistance{
 	public void saveFournisseur(FournisseurEnergie f) throws IOException{
 		oosSaveFournisseurs.writeObject(f);
 		oosSaveFournisseurs.close();
+	}
+	
+	public void saveConsommateur(Consommateur c) throws IOException{
+		oosSaveConsommateurs.writeObject(c) ;
+		oosSaveConsommateurs.close();
+	}
+	
+	public void saveAdministrateur(Administrateur a) throws IOException{
+		oosSaveAdmins.writeObject(a) ;
+		oosSaveAdmins.close();
 	}
 
 	public ArrayList<Compteur> getAllCompteurs() throws ClassNotFoundException, IOException{
@@ -81,6 +100,21 @@ public class Persistance{
 	    }
 	    
 	    oisSaveFournisseurs.close();
+			
+		return liste;
+	}
+	
+	public ArrayList<Administrateur> getAllAdmins() throws ClassNotFoundException, IOException{
+		
+		ArrayList<Administrateur> liste = new ArrayList<Administrateur>();
+		
+	    while(true){
+	        try{
+	        	liste.add((Administrateur) oisSaveAdmins.readObject());
+	        } catch (EOFException e){break;};
+	    }
+	    
+	    oisSaveAdmins.close();
 			
 		return liste;
 	}
