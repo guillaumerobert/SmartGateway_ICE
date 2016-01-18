@@ -17,6 +17,9 @@ import Controleur.ControleurDisplay;
 import Modele.Compteur;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import java.awt.BorderLayout;
 import java.awt.Font;
 
 //----------------------------------------------------------------------------
@@ -29,21 +32,21 @@ import java.awt.Font;
 //## class VueCompteur 
 public class VueCompteur extends JFrame {
     
-    protected ControleurDisplay itsControleurDisplay;		//## link itsControleurDisplay
-    
-    private JLabel labelConsommationHeuresCreuses;
-    
-    private JLabel numero;
-    private JLabel consoHeuresCreuses;
-    private JLabel labelConsommationHeuresPleines;
-    private JLabel labelCompteurN;
-    private JLabel consoHeuresPleines;
-    
+	 protected ControleurDisplay itsControleurDisplay;		//## link itsControleurDisplay
+	    
     private String numCompteur;
     private String consHeuresCreuses;
     private String consHeuresPleines;
     
     private Compteur compteur;
+    private JPanel panel;
+    private JLabel labelCompteur;
+    private JLabel labelConsommationHeuresCreuses;
+    private JLabel labelConsommationHeuresPleines;
+    private JLabel numero;
+    private JLabel heuresCreuses;
+    private JLabel heuresPleines;
+
     
     // Constructors
     
@@ -52,41 +55,47 @@ public class VueCompteur extends JFrame {
     {
     	
     	compteur = pCompteur;
-    	
-    	this.setLayout(null);
     	this.setTitle(compteur.getItsConsommateur().getNom());
     	
     	numCompteur = String.valueOf(compteur.getNumeroCompteur());
     	consHeuresCreuses = String.valueOf(compteur.getConsoHeuresCreuses());
     	consHeuresPleines = String.valueOf(compteur.getConsoHeuresPleines());
     	
+    	this.setSize(399, 193);
+    	
+    	panel = new JPanel();
+    	getContentPane().add(panel, BorderLayout.CENTER);
+    	panel.setLayout(null);
+    	
+    	labelCompteur = new JLabel("Compteur N\u00B0");
+    	labelCompteur.setFont(new Font("Arial", Font.PLAIN, 20));
+    	labelCompteur.setBounds(96, 11, 113, 24);
+    	panel.add(labelCompteur);
+    	
     	labelConsommationHeuresCreuses = new JLabel("Consommation heures creuses");
-    	labelConsommationHeuresCreuses.setFont(new Font("Arial", Font.PLAIN, 15));
-    	labelConsommationHeuresCreuses.setBounds(10, 59, 212, 31);
-    	this.add(labelConsommationHeuresCreuses);
-    	
-    	numero = new JLabel(numCompteur);
-    	numero.setBounds(232, 23, 46, 14);
-    	this.add(numero);
-    	
-    	consoHeuresCreuses = new JLabel(consHeuresCreuses);
-    	consoHeuresCreuses.setBounds(232, 68, 46, 14);
-    	this.add(consoHeuresCreuses);
+    	labelConsommationHeuresCreuses.setFont(new Font("Arial", Font.BOLD, 13));
+    	labelConsommationHeuresCreuses.setBounds(10, 59, 212, 24);
+    	panel.add(labelConsommationHeuresCreuses);
     	
     	labelConsommationHeuresPleines = new JLabel("Consommation heures pleines");
-    	labelConsommationHeuresPleines.setFont(new Font("Arial", Font.PLAIN, 15));
-    	labelConsommationHeuresPleines.setBounds(10, 101, 212, 31);
-    	this.add(labelConsommationHeuresPleines);
+    	labelConsommationHeuresPleines.setFont(new Font("Arial", Font.BOLD, 13));
+    	labelConsommationHeuresPleines.setBounds(10, 94, 199, 24);
+    	panel.add(labelConsommationHeuresPleines);
     	
-    	labelCompteurN = new JLabel("Compteur N\u00B0");
-    	labelCompteurN.setFont(new Font("Arial", Font.PLAIN, 22));
-    	labelCompteurN.setBounds(90, 11, 132, 31);
-    	this.add(labelCompteurN);
+    	numero = new JLabel(numCompteur);
+    	numero.setBounds(219, 11, 121, 22);
+    	numero.setFont(new Font("Arial", Font.PLAIN, 20));
+    	panel.add(numero);
     	
-    	consoHeuresPleines = new JLabel(consHeuresPleines);
-    	consoHeuresPleines.setBounds(232, 110, 46, 14);
-    	this.add(consoHeuresPleines);
+    	heuresCreuses = new JLabel(consHeuresCreuses);
+    	heuresCreuses.setBounds(232, 65, 108, 14);
+    	heuresCreuses.setFont(new Font("Arial", Font.PLAIN, 15));
+    	panel.add(heuresCreuses);
     	
+    	heuresPleines = new JLabel(consHeuresPleines);
+    	heuresPleines.setBounds(219, 100, 121, 14);
+    	heuresPleines.setFont(new Font("Arial", Font.PLAIN, 15));
+    	panel.add(heuresPleines);
     	
     }
     
