@@ -118,5 +118,37 @@ public class Persistance{
 			
 		return liste;
 	}
+	
+	public Compteur getCompteur(int pNumCompteur) throws ClassNotFoundException, IOException{
+		
+		while(true){
+	        try{
+	        	Compteur cptTemp = (Compteur)oisSaveCompteur.readObject();
+	        	if(cptTemp.getNumeroCompteur() == pNumCompteur){
+	        		oisSaveCompteur.close();
+	        		return cptTemp;
+	        	}
+	        } catch (EOFException e){break;};
+	    }
+	    
+	    oisSaveCompteur.close();
+	    return null;
+	}
+	
+	public Consommateur getConsommateur(String pLogin) throws ClassNotFoundException, IOException{
+		
+		while(true){
+	        try{
+	        	Consommateur consoTemp = (Consommateur)oisSaveConsomamteurs.readObject();
+	        	if(consoTemp.getLogin().equals(pLogin)){
+	        		oisSaveConsomamteurs.close();
+	        		return consoTemp;
+	        	}
+	        } catch (EOFException e){break;};
+	    }
+	    
+		oisSaveConsomamteurs.close();
+	    return null;
+	}
 
 }
