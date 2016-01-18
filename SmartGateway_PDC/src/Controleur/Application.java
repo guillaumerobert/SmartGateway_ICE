@@ -14,6 +14,7 @@ import Modele.Utilisateur;
 import Vue.GlobalPane;
 import Vue.MainFrame;
 import Vue.VueCompteur;
+import Vue.VueConsommateur;
 import Vue.VueLogin;
 
 public class Application { 
@@ -46,23 +47,29 @@ public class Application {
 		FournisseurEnergie edf = new FournisseurEnergie("EDF", 0.25);
 		FournisseurEnergie veolia = new FournisseurEnergie("VEOLIA", 0.32);
 		
-		Consommateur c1 = new Consommateur("Billy", "Joe", "bjo", "bjo", "3 avenue de paris", edf, 0);
-		Consommateur c2 = new Consommateur("Jackie", "Museau", "jmu", "jmu", "1 avenue de lisbonne", veolia, 1);
-		Consommateur c3 = new Consommateur("Bertrand", "Pet", "bpe", "bpe", "5 avenue de madrid", edf, 1);
-		Consommateur c4 = new Consommateur("Sarah", "Meuh", "sme", "sme", "5 route de lune", veolia, 0);
-		Consommateur c5 = new Consommateur("Patrick", "Vinasse", "pvi", "pvi", "12 av de mars", veolia, 0);
+		Consommateur conso1 = new Consommateur("Billy", "Joe", "bjo", "bjo", "3 avenue de paris", edf, 0);
+		Consommateur conso2 = new Consommateur("Jackie", "Museau", "jmu", "jmu", "1 avenue de lisbonne", veolia, 1);
+		Consommateur conso3 = new Consommateur("Bertrand", "Pet", "bpe", "bpe", "5 avenue de madrid", edf, 1);
+		Consommateur conso4 = new Consommateur("Sarah", "Meuh", "sme", "sme", "5 route de lune", veolia, 0);
+		Consommateur conso5 = new Consommateur("Patrick", "Vinasse", "pvi", "pvi", "12 av de mars", veolia, 0);
 		
-		Compteur cpt1 = new Compteur(c1);
-		Compteur cpt2 = new Compteur(c2);
-		Compteur cpt3 = new Compteur(c3);
-		Compteur cpt4 = new Compteur(c4);
-		Compteur cpt5 = new Compteur(c5);
+		Compteur cpt1 = new Compteur(conso1);
+		Compteur cpt2 = new Compteur(conso2);
+		Compteur cpt3 = new Compteur(conso3);
+		Compteur cpt4 = new Compteur(conso4);
+		Compteur cpt5 = new Compteur(conso5);
 		
-		utilisateurs.add(c1);
-		utilisateurs.add(c2);
-		utilisateurs.add(c3);
-		utilisateurs.add(c4);
-		utilisateurs.add(c5);
+		conso1.__setItsCompteur(cpt1);
+		conso2.__setItsCompteur(cpt2);
+		conso3.__setItsCompteur(cpt3);
+		conso4.__setItsCompteur(cpt4);
+		conso5.__setItsCompteur(cpt5);
+		
+		utilisateurs.add(conso1);
+		utilisateurs.add(conso2);
+		utilisateurs.add(conso3);
+		utilisateurs.add(conso4);
+		utilisateurs.add(conso5);
 		
 		//utilisateurs.add(edf);
 		//utilisateurs.add(veolia);

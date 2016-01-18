@@ -24,6 +24,8 @@ import javax.swing.JTextField;
 
 //## link itsControleLogin 
 import Controleur.ControleLogin;
+import Modele.Administrateur;
+import Modele.Consommateur;
 import Modele.Utilisateur;
 
 //----------------------------------------------------------------------------
@@ -82,8 +84,16 @@ public class VueLogin extends JDialog {
     	logger = ctrlL.login(login.getText(), password.getText());
     	
     	if (logger != null) {
-    		System.out.println("YES existe");
-    		// Frame Client a appeler
+    		
+    		System.out.println("Utilisateur existe !");
+    		
+    		if (logger instanceof Consommateur) {
+	    		VueConsommateur fenConso = new VueConsommateur((Consommateur) logger);
+	    		fenConso.setVisible(true);
+	    		fenConso.pack();
+    		} else if (logger instanceof Administrateur) {
+    			// appel fen gateway
+    		}
     	} else {
     		System.err.println("N existe pas");
     	}

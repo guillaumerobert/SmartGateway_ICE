@@ -42,7 +42,7 @@ public class Compteur {
     //## operation Compteur() 
     public  Compteur(Consommateur _conso) {
     	this.generateur = new Random();
-		this.numeroCompteur = this.generateur.nextInt();
+		this.numeroCompteur = this.generateur.nextInt((99999-1)+1);
 		this.rangeMin = 100.0;
 		this.rangeMax = 10000.0;
 		this.itsConsommateur = _conso;
@@ -143,6 +143,10 @@ public class Compteur {
     //## auto_generated 
     public void _clearItsConsommateur() {
         itsConsommateur = null;
+    }
+    
+    public double getConsoTotale() {
+    	return this.consoHeuresCreuses + this.consoHeuresPleines;
     }
     
 }
