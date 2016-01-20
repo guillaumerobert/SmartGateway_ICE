@@ -130,6 +130,10 @@ public class Consommateur extends Utilisateur {
         itsFournisseurEnergie = null;
     }
     
+    public String getTotalPrixMensuel(/* String pMois */) {
+    	return Double.toString(itsCompteur.getConsoTotale()*itsFournisseurEnergie.getTarif());
+    }
+    
 }
 /*********************************************************************
 	File Path	: DefaultComponent/DefaultConfig/Modele/Consommateur.java

@@ -64,7 +64,7 @@ public class Compteur {
     
     //## auto_generated 
     public double getConsoHeuresCreuses() {
-        return consoHeuresCreuses;
+        return (double)Math.round(consoHeuresCreuses * 100) / 100;
     }
     
     //## auto_generated 
@@ -74,7 +74,7 @@ public class Compteur {
     
     //## auto_generated 
     public double getConsoHeuresPleines() {
-        return consoHeuresPleines;
+        return (double)Math.round(consoHeuresPleines * 100) / 100;
     }
     
     //## auto_generated 
@@ -146,7 +146,7 @@ public class Compteur {
     }
     
     public double getConsoTotale() {
-    	return this.consoHeuresCreuses + this.consoHeuresPleines;
+    	return (double)Math.round((this.consoHeuresCreuses + this.consoHeuresPleines) * 100) / 100;
     }
     
 }

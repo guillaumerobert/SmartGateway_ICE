@@ -6,6 +6,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
+import java.net.MalformedURLException;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -13,6 +15,8 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import com.itextpdf.text.DocumentException;
 
 import Modele.Consommateur;
 
@@ -67,18 +71,18 @@ public class VueConsommateur extends JFrame {
 			releveHPValeur = new JLabel(releveHPValeurString);
 			this.mettreEnGras(releveHPValeur);
 			
-			releveTotal = new JLabel("Total : ");
+			releveTotal = new JLabel("Total consommés en h : ");
 			releveTotalValeurString = Double.toString(c.getItsCompteur().getConsoTotale());
 			releveTotalValeur = new JLabel(releveTotalValeurString);
 			this.mettreEnGras(releveTotalValeur);
 			
 			coutUnitaire = new JLabel("Cout unitaire TTC du kw/h : ");
-			coutUnitaireValeurString = "x €";
+			coutUnitaireValeurString = Double.toString(c.getItsFournisseurEnergie().getTarif());
 			coutUnitaireValeur = new JLabel(coutUnitaireValeurString);
 			this.mettreEnGras(coutUnitaireValeur);
 			
-			totalTTC = new JLabel("Total TTC : ");
-			totalTTCValeurString = "x €";
+			totalTTC = new JLabel("Total TTC en € : ");
+			totalTTCValeurString = c.getTotalPrixMensuel();
 			totalTTCValeur = new JLabel(totalTTCValeurString);
 			this.mettreEnGras(totalTTCValeur);
 			
@@ -88,7 +92,19 @@ public class VueConsommateur extends JFrame {
 				@Override
 				public void actionPerformed(ActionEvent e) {
 					Facture _f = new Facture(mois, nomComplet, compteurValeurString, releveHCValeurString, releveHPValeurString, releveTotalValeurString, coutUnitaireValeurString, totalTTCValeurString);
-					_f.genererFacture();
+					
+					try {
+						_f.genererFacture();
+					} catch (MalformedURLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (DocumentException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 				
 			});
