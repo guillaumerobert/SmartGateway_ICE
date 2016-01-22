@@ -149,6 +149,26 @@ public class Compteur {
     	return (double)Math.round((this.consoHeuresCreuses + this.consoHeuresPleines) * 100) / 100;
     }
     
+    
+    
+    
+    
+    // PIPO
+    
+    
+    public double getConsoHCMois() {
+    	Double aleaDivMois = 10 + (14 - 10) * generateur.nextDouble();
+    	
+        return (double)Math.round(((consoHeuresCreuses * 100) / 100) / aleaDivMois);
+    }
+    
+    public double getConsoHPMois() {
+    	
+    	Double aleaDivMois = 10 + (14 - 10) * generateur.nextDouble();
+    	
+        return (double)Math.round(((consoHeuresPleines * 100) / 100) / aleaDivMois);
+    }
+    
 }
 /*********************************************************************
 	File Path	: DefaultComponent/DefaultConfig/Modele/Compteur.java

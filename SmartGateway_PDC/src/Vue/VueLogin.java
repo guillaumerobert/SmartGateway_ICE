@@ -24,7 +24,11 @@ import javax.swing.JTextField;
 
 //## link itsControleLogin 
 import Controleur.ControleLogin;
+import Controleur.ControleurDisplay;
+import Controleur.ControleurFournisseur;
+import Controleur.ControleurLED;
 import Controleur.RRC;
+import Modele.Passerelle;
 import Modele.Utilisateur;
 
 //----------------------------------------------------------------------------
@@ -51,16 +55,25 @@ public class VueLogin extends JDialog {
 	private JButton ok, annuler;
 	private Utilisateur logger;
 	private ControleLogin ctrlL;
+	private ControleurDisplay ctrlDisplay;
+	private ControleurLED ctrlLED;
+	private ControleurFournisseur ctrlFournisseur;
+	private Passerelle gateway;
+	
 	private RRC rrc;
    
 	
 	// Constructors
     
     //## auto_generated 
-	
-	public VueLogin(ControleLogin _ctrlL, RRC _rrc) {
+	  
+	public VueLogin(ControleLogin _ctrlL, RRC _rrc, ControleurDisplay _ctrlDisplay, ControleurLED _ctrlLED, ControleurFournisseur _ctrlFournisseur, Passerelle _gateway) {
 		this.ctrlL = _ctrlL;
 		this.rrc = _rrc;
+		this.ctrlDisplay = _ctrlDisplay;
+		this.ctrlLED = _ctrlLED;
+		this.ctrlFournisseur = _ctrlFournisseur;
+		this.gateway = _gateway;
 		init();
 	}
    
@@ -83,8 +96,7 @@ public class VueLogin extends JDialog {
     public void actionPerformed(ActionEvent e) {
    
     	logger = ctrlL.login(login.getText(), password.getText());
-    	ctrlL.gererAuthentification(logger, rrc);
-    	
+    	ctrlL.gererAuthentification(logger, rrc, ctrlDisplay, ctrlLED, ctrlFournisseur, gateway);
     }
  });
  

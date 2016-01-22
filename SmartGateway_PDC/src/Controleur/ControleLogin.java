@@ -12,9 +12,14 @@ package Controleur;
 
 import java.util.ArrayList;
 
+import javax.swing.JFrame;
+
 import Modele.Administrateur;
 import Modele.Consommateur;
+import Modele.Passerelle;
 import Modele.Utilisateur;
+import Vue.GlobalPane;
+import Vue.MainFrame;
 import Vue.VueConsommateur;
 
 //----------------------------------------------------------------------------
@@ -62,7 +67,7 @@ public class ControleLogin {
     }
     
     // AJOUT
-    public void gererAuthentification(Utilisateur logger, RRC rrc) {
+    public void gererAuthentification(Utilisateur logger, RRC rrc, ControleurDisplay ctrlDisplay, ControleurLED ctrlLED, ControleurFournisseur ctrlFournisseur, Passerelle gateway) {
     	
     	if (logger != null) {
     		
@@ -71,10 +76,20 @@ public class ControleLogin {
     		if (logger instanceof Consommateur) {
     			Consommateur conso = (Consommateur) logger;
 	    		VueConsommateur fenConso = new VueConsommateur(conso, rrc.getItsRRCModel().getDonneesDuCompteurParMois(conso.getItsCompteur().getNumeroCompteur()));
+    			
+    			fenConso.draw();
 	    		fenConso.setVisible(true);
 	    		fenConso.pack();
     		} else if (logger instanceof Administrateur) {
-    			// appel fen gateway
+    			
+    			GlobalPane gp = new GlobalPane(ctrlDisplay, ctrlLED);
+    			MainFrame fen = new MainFrame(rrc, ctrlFournisseur, gateway);
+    			
+    			fen.setContentPane(gp);
+    			fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    			fen.pack();
+    			fen.repaint();
+    			fen.setVisible(true);
     		}
     	} else {
     		System.err.println("N existe pas");

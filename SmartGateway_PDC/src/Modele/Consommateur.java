@@ -131,7 +131,8 @@ public class Consommateur extends Utilisateur {
     }
     
     public String getTotalPrixMensuel(/* String pMois */) {
-    	return Double.toString(itsCompteur.getConsoTotale()*itsFournisseurEnergie.getTarif());
+    	Double prixTot = (double)Math.round(itsCompteur.getConsoTotale()*itsFournisseurEnergie.getTarif() * 100) / 100;
+    	return Double.toString(prixTot);
     }
     
 }

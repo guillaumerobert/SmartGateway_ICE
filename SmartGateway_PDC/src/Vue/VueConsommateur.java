@@ -36,9 +36,32 @@ public class VueConsommateur extends JFrame {
 	private JComboBox<String> listeMois;
 	private String mois, nomComplet, compteurValeurString, releveHCValeurString, releveHPValeurString, releveTotalValeurString, coutUnitaireValeurString, totalTTCValeurString;
 	private JButton btnEditer;
+	private ArrayList<Compteur> compteursDuUserParMois;
+	private Consommateur c;
 	
-	public VueConsommateur(Consommateur c, ArrayList<Compteur> compteursDuUserParMois){
-		
+	public VueConsommateur(Consommateur pC, ArrayList<Compteur> pCompteursDuUserParMois){
+			
+			this.c = pC;	
+			this.compteursDuUserParMois = pCompteursDuUserParMois;
+			this.mois = "JANVIER";
+			
+			this.vectorMois = new Vector<>();
+			
+			this.vectorMois.add("Janvier");
+			this.vectorMois.add("Février");
+			this.vectorMois.add("Mars");
+			this.vectorMois.add("Avril");
+			this.vectorMois.add("Mai");
+			this.vectorMois.add("Juin");
+			this.vectorMois.add("Juillet");
+			this.vectorMois.add("Août");
+			this.vectorMois.add("Septembre");
+			this.vectorMois.add("Octobre");
+			this.vectorMois.add("Novembre");
+			this.vectorMois.add("Décembre");
+	}
+	
+	public void draw() {
 			this.setLayout(new BorderLayout());
 			
 			haut = new JPanel();
@@ -51,7 +74,6 @@ public class VueConsommateur extends JFrame {
 			bas.setLayout(new FlowLayout());
 			
 			nomComplet = c.getNom() + " " + c.getPrenom();
-			mois = "JANVIER";
 			
 			titre = new JLabel("Hello " + nomComplet);
 			titre.setFont(new Font("Arial", Font.BOLD, 25));
@@ -64,17 +86,21 @@ public class VueConsommateur extends JFrame {
 			this.mettreEnGras(compteurValeur);
 			
 			releveHC = new JLabel("Heures Creuses : ");
-			releveHCValeurString = Double.toString(c.getItsCompteur().getConsoHeuresCreuses()); // A REMPLA PAR LES DATA DU RRC MODEL
+			releveHCValeurString = Double.toString(c.getItsCompteur().getConsoHCMois()); // A REMPLA PAR LES DATA DU RRC MODEL
+			//releveHCValeurString = this.consoHeuresCreusesDuMoisDe(0);
 			releveHCValeur = new JLabel(releveHCValeurString);
 			this.mettreEnGras(releveHCValeur);
 			
 			releveHP = new JLabel("Heures Pleines : ");
 			releveHPValeurString = Double.toString(c.getItsCompteur().getConsoHeuresPleines()); // A REMPLA PAR LES DATA DU RRC MODEL
+			//releveHPValeurString = this.consoHeuresPleinesDuMoisDe(0);
+			
 			releveHPValeur = new JLabel(releveHPValeurString);
 			this.mettreEnGras(releveHPValeur);
 			
 			releveTotal = new JLabel("Total consommés en h : ");
 			releveTotalValeurString = Double.toString(c.getItsCompteur().getConsoTotale());
+			//releveTotalValeurString = this.consoHeuresTotalesDuMoisDe(0);
 			releveTotalValeur = new JLabel(releveTotalValeurString);
 			this.mettreEnGras(releveTotalValeur);
 			
@@ -112,20 +138,6 @@ public class VueConsommateur extends JFrame {
 				
 			});
 			
-			this.vectorMois = new Vector<>();
-			vectorMois.add("Janvier");
-			vectorMois.add("Février");
-			vectorMois.add("Mars");
-			vectorMois.add("Avril");
-			vectorMois.add("Mai");
-			vectorMois.add("Juin");
-			vectorMois.add("Juillet");
-			vectorMois.add("Août");
-			vectorMois.add("Septembre");
-			vectorMois.add("Octobre");
-			vectorMois.add("Novembre");
-			vectorMois.add("Décembre");
-			
 			this.listeMois = new JComboBox<>(vectorMois);
 			this.listeMois.addActionListener(new ActionListener() {
 				
@@ -133,6 +145,15 @@ public class VueConsommateur extends JFrame {
 				public void actionPerformed(ActionEvent e) {
 					mois = vectorMois.get(listeMois.getSelectedIndex()).toUpperCase();
 					conso.setText("Votre consommation du mois de " + mois);
+					
+					releveHCValeurString = consoHeuresCreusesDuMoisDe(listeMois.getSelectedIndex());
+					releveHCValeur.setText(releveHCValeurString);
+					
+					releveHPValeurString = consoHeuresPleinesDuMoisDe(listeMois.getSelectedIndex());
+					releveHPValeur.setText(releveHPValeurString);
+					
+					releveTotalValeurString = consoHeuresTotalesDuMoisDe(listeMois.getSelectedIndex());
+					releveTotalValeur.setText(releveTotalValeurString);
 				}
 			});
 			
@@ -164,5 +185,20 @@ public class VueConsommateur extends JFrame {
 	
 	private void mettreEnGras(JLabel _lab) {
 		 _lab.setFont(new Font("Arial", Font.BOLD, 14));
+	}
+	
+	private String consoHeuresCreusesDuMoisDe(int pNumMois) {
+		return Double.toString(c.getItsCompteur().getConsoHCMois());
+		//return Double.toString(compteursDuUserParMois.get(pNumMois).getConsoHeuresCreuses());
+	}
+	
+	private String consoHeuresPleinesDuMoisDe(int pNumMois) {
+		return Double.toString(c.getItsCompteur().getConsoHPMois());
+		//return Double.toString(compteursDuUserParMois.get(pNumMois).getConsoHeuresPleines());
+	}
+	
+	private String consoHeuresTotalesDuMoisDe(int pNumMois) {
+		return Double.toString(c.getItsCompteur().getConsoHCMois() + c.getItsCompteur().getConsoHPMois());
+		//return Double.toString(compteursDuUserParMois.get(pNumMois).getConsoTotale());
 	}
 }

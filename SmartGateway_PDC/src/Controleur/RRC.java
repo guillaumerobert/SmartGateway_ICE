@@ -56,6 +56,7 @@ public class RRC {
     
     //## operation transmettreDonnees() 
     public void transmettreDonnees(Passerelle pPass, int pNumMois) {
+    	
     	itsRRCModel.setDonneesDuMois(pPass, pNumMois);
     }
     
@@ -149,7 +150,7 @@ public class RRC {
     public Vector<Consommateur> getAllConsummers(Passerelle _gateway) {
    
     	Vector<Consommateur> listeConso = new Vector<>(); 	
-    	Iterator<Compteur> it = _gateway.getCompteur();
+    	Iterator<Compteur> it = _gateway.getCompteurs();
     	Consommateur c;
     	
         while(it.hasNext())
