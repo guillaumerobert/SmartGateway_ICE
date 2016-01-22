@@ -36,6 +36,13 @@ public class Utilisateur {
     public  Utilisateur() {
     }
     
+    public  Utilisateur(String _login, String _mdp, String _nom, String _prenom) {
+    	this.login = _login;
+    	this.mdp = _mdp;
+    	this.nom = _nom;
+    	this.prenom = _prenom;
+    }
+    
     public  Utilisateur(String _login, String _mdp) {
     	this.login = _login;
     	this.mdp = _mdp;
