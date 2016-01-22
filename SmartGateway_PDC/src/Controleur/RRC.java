@@ -17,7 +17,6 @@ import Modele.Passerelle;
 //## link itsFournisseurEnergie 
 import Modele.FournisseurEnergie;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
 
@@ -51,15 +50,13 @@ public class RRC {
     }
     
     //## operation demandeDonnees() 
-    public void demandeDonnees() {
-        //#[ operation demandeDonnees() 
-        //#]
+    public Compteur demandeDonnees(int pNumPasserelle, int pNumCompteur, int pNumMois) {
+    	return itsRRCModel.getDonneesDuMois(pNumMois, pNumCompteur);
     }
     
     //## operation transmettreDonnees() 
-    public void transmettreDonnees() {
-        //#[ operation transmettreDonnees() 
-        //#]
+    public void transmettreDonnees(Passerelle pPass, int pNumMois) {
+    	itsRRCModel.setDonneesDuMois(pPass, pNumMois);
     }
     
     //## auto_generated 

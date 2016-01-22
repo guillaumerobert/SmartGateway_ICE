@@ -93,9 +93,8 @@ public class Passerelle {
     }
     
     //## operation pushRRC() 
-    public void pushRRC() {
-        //#[ operation pushRRC() 
-        //#]
+    public void pushRRC(int numMois) {
+    	itsRRC.transmettreDonnees(this, numMois);
     }
     
     //## auto_generated 

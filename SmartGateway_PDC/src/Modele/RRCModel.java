@@ -31,11 +31,15 @@ public class RRCModel {
     
     protected RRC itsRRC;		//## link itsRRC 
     
+    private Map<Integer, LinkedList<Passerelle>> donneesSaveParMois = new HashMap<>();
     
     // Constructors
     
     //## auto_generated 
     public  RRCModel() {
+    	
+    	for (int i = 1; i < 13; i++)
+    		donneesSaveParMois.put(i, new LinkedList<Passerelle>());
     }
     
     //## auto_generated 
@@ -133,6 +137,35 @@ public class RRCModel {
     //## auto_generated 
     public void _clearItsRRC() {
         itsRRC = null;
+    }
+    
+    // AJOUT
+    public void setDonneesDuMois(Passerelle _p, int _numMois) { // on set seulement sur l'annee en cours
+    	
+    	if (donneesSaveParMois.get(_numMois).isEmpty() && _numMois >= 1 && _numMois <= 12)
+    			donneesSaveParMois.get(_numMois).add(_p);
+    }
+    
+    // AJOUT
+    public Compteur getDonneesDuMois(int _numMois, int _numCpt) {
+    	LinkedList<Passerelle> pass = donneesSaveParMois.get(_numMois);
+    	for(Passerelle p : pass) {
+    		return p.getCompteurNumber(_numCpt);
+    	}
+    	
+    	return null;
+    }
+    
+    // AJOUT
+    public ArrayList<Compteur> getDonneesDuCompteurParMois(int _numCpt) {
+    	
+    	ArrayList<Compteur> compteurs = new ArrayList<>();
+    	
+    	for (int i = 1; i < 13; i++) {
+    		compteurs.add(getDonneesDuMois(i, _numCpt));
+    	}
+    	
+    	return compteurs;
     }
     
 }

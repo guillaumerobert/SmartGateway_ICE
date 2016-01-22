@@ -116,7 +116,7 @@ public class Application {
 		frameCpt5.setVisible(true);
 		frameCpt5.setLocation(0, 800);
 		
-		VueLogin fenLog = new VueLogin(ctrlLog);
+		VueLogin fenLog = new VueLogin(ctrlLog, rrc);
 		fenLog.setVisible(true);
 	}
 

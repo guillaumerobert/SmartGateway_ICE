@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.JButton;
@@ -19,6 +20,7 @@ import javax.swing.JPanel;
 import com.itextpdf.text.DocumentException;
 
 import Modele.Consommateur;
+import Modele.Compteur;
 
 
 public class VueConsommateur extends JFrame {
@@ -27,7 +29,7 @@ public class VueConsommateur extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private JLabel titre,conso,compteur,releveHC,releveHP,releveTotal,coutUnitaire,totalTTC,aReglerAvant,
+	private JLabel titre,conso,compteur,releveHC,releveHP,releveTotal,coutUnitaire,totalTTC,
 					compteurValeur, releveHCValeur, releveHPValeur, releveTotalValeur, coutUnitaireValeur, totalTTCValeur;
 	private JPanel haut, corps, bas;
 	private Vector<String> vectorMois;
@@ -35,7 +37,7 @@ public class VueConsommateur extends JFrame {
 	private String mois, nomComplet, compteurValeurString, releveHCValeurString, releveHPValeurString, releveTotalValeurString, coutUnitaireValeurString, totalTTCValeurString;
 	private JButton btnEditer;
 	
-	public VueConsommateur(Consommateur c){
+	public VueConsommateur(Consommateur c, ArrayList<Compteur> compteursDuUserParMois){
 		
 			this.setLayout(new BorderLayout());
 			
@@ -62,12 +64,12 @@ public class VueConsommateur extends JFrame {
 			this.mettreEnGras(compteurValeur);
 			
 			releveHC = new JLabel("Heures Creuses : ");
-			releveHCValeurString = Double.toString(c.getItsCompteur().getConsoHeuresCreuses());
+			releveHCValeurString = Double.toString(c.getItsCompteur().getConsoHeuresCreuses()); // A REMPLA PAR LES DATA DU RRC MODEL
 			releveHCValeur = new JLabel(releveHCValeurString);
 			this.mettreEnGras(releveHCValeur);
 			
 			releveHP = new JLabel("Heures Pleines : ");
-			releveHPValeurString = Double.toString(c.getItsCompteur().getConsoHeuresPleines());
+			releveHPValeurString = Double.toString(c.getItsCompteur().getConsoHeuresPleines()); // A REMPLA PAR LES DATA DU RRC MODEL
 			releveHPValeur = new JLabel(releveHPValeurString);
 			this.mettreEnGras(releveHPValeur);
 			
@@ -95,6 +97,7 @@ public class VueConsommateur extends JFrame {
 					
 					try {
 						_f.genererFacture();
+						System.out.println("Facture générée avec succès.");
 					} catch (MalformedURLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();

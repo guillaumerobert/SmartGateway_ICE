@@ -24,8 +24,7 @@ import javax.swing.JTextField;
 
 //## link itsControleLogin 
 import Controleur.ControleLogin;
-import Modele.Administrateur;
-import Modele.Consommateur;
+import Controleur.RRC;
 import Modele.Utilisateur;
 
 //----------------------------------------------------------------------------
@@ -52,14 +51,16 @@ public class VueLogin extends JDialog {
 	private JButton ok, annuler;
 	private Utilisateur logger;
 	private ControleLogin ctrlL;
+	private RRC rrc;
    
 	
 	// Constructors
     
     //## auto_generated 
 	
-	public VueLogin(ControleLogin _ctrlL) {
+	public VueLogin(ControleLogin _ctrlL, RRC _rrc) {
 		this.ctrlL = _ctrlL;
+		this.rrc = _rrc;
 		init();
 	}
    
@@ -82,21 +83,8 @@ public class VueLogin extends JDialog {
     public void actionPerformed(ActionEvent e) {
    
     	logger = ctrlL.login(login.getText(), password.getText());
+    	ctrlL.gererAuthentification(logger, rrc);
     	
-    	if (logger != null) {
-    		
-    		System.out.println("Utilisateur existe !");
-    		
-    		if (logger instanceof Consommateur) {
-	    		VueConsommateur fenConso = new VueConsommateur((Consommateur) logger);
-	    		fenConso.setVisible(true);
-	    		fenConso.pack();
-    		} else if (logger instanceof Administrateur) {
-    			// appel fen gateway
-    		}
-    	} else {
-    		System.err.println("N existe pas");
-    	}
     }
  });
  

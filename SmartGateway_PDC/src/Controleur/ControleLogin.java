@@ -11,7 +11,11 @@
 package Controleur;
 
 import java.util.ArrayList;
+
+import Modele.Administrateur;
+import Modele.Consommateur;
 import Modele.Utilisateur;
+import Vue.VueConsommateur;
 
 //----------------------------------------------------------------------------
 // Controleur/ControleLogin.java                                                                  
@@ -55,6 +59,26 @@ public class ControleLogin {
 		}
     	
 		return uNOK;
+    }
+    
+    // AJOUT
+    public void gererAuthentification(Utilisateur logger, RRC rrc) {
+    	
+    	if (logger != null) {
+    		
+    		System.out.println("Utilisateur existe !");
+    		
+    		if (logger instanceof Consommateur) {
+    			Consommateur conso = (Consommateur) logger;
+	    		VueConsommateur fenConso = new VueConsommateur(conso, rrc.getItsRRCModel().getDonneesDuCompteurParMois(conso.getItsCompteur().getNumeroCompteur()));
+	    		fenConso.setVisible(true);
+	    		fenConso.pack();
+    		} else if (logger instanceof Administrateur) {
+    			// appel fen gateway
+    		}
+    	} else {
+    		System.err.println("N existe pas");
+    	}
     }
     
 }
