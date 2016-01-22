@@ -24,8 +24,9 @@ public class Administrateur extends Utilisateur {
     
     // Constructors
     
-    //## auto_generated 
-    public  Administrateur() {
+	//## auto_generated 
+    public  Administrateur(String _nom, String _pren, String _login, String _mdp) {
+    	super(_login,_mdp,_nom,_pren);
     }
     
 }
