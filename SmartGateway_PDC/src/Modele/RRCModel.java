@@ -31,7 +31,7 @@ public class RRCModel {
     
     protected RRC itsRRC;		//## link itsRRC 
     
-    private Map<Integer, LinkedList<Passerelle>> donneesSaveParMois = new HashMap<>();
+    public Map<Integer, LinkedList<Passerelle>> donneesSaveParMois = new HashMap<>();
     
     // Constructors
     
@@ -142,13 +142,16 @@ public class RRCModel {
     // AJOUT
     public void setDonneesDuMois(Passerelle _p, int _numMois) { // on set seulement sur l'annee en cours
     	
-    	if (donneesSaveParMois.get(_numMois).isEmpty() && _numMois >= 1 && _numMois <= 12)
-    			donneesSaveParMois.get(_numMois).add(_p);
+    	//if (donneesSaveParMois.get(_numMois).isEmpty() && _numMois >= 1 && _numMois <= 12)
+    	if (_numMois >= 1 && _numMois <= 12) {
+    		donneesSaveParMois.get(_numMois).add(new Passerelle(this, _p.compteurs));
+    	}
     }
     
     // AJOUT
     public Compteur getDonneesDuMois(int _numMois, int _numCpt) {
     	LinkedList<Passerelle> pass = donneesSaveParMois.get(_numMois);
+    
     	for(Passerelle p : pass) {
     		return p.getCompteurNumber(_numCpt);
     	}

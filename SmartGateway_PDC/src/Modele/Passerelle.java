@@ -63,6 +63,11 @@ public class Passerelle {
         itsRRCModel = rrcm;
     }
     
+    public  Passerelle(RRCModel rrcm, LinkedList<Compteur> cpts) {
+        this.compteurs = cpts;
+        itsRRCModel = rrcm;
+    }
+    
     /**
      * @param c
     */
@@ -93,7 +98,20 @@ public class Passerelle {
     }
     
     //## operation pushRRC() 
+    public void pushRRCSimul() {
+    	
+    	for (int i = 1; i < 8; i++) { // on simule qu on save tout jusqu'à juillet
+    		for (Compteur c : this.compteurs) {
+	    		c.consommer();
+    		}
+    		itsRRC.transmettreDonnees(this, i);
+    	}
+    	
+    }
+    
+  //## operation pushRRC() 
     public void pushRRC(int numMois) {
+    	
     	itsRRC.transmettreDonnees(this, numMois);
     }
     
@@ -118,14 +136,23 @@ public class Passerelle {
     }
     
     //## auto_generated 
-    public ListIterator<Compteur> getCompteur() {
+    public ListIterator<Compteur> getCompteurs() {
         ListIterator<Compteur> iter = compteurs.listIterator();
         return iter;
     }
     
+    //## auto_generated 
+    public void setCompteurs(LinkedList<Compteur> cpts) {
+        this.compteurs = cpts;
+    }
+    
     // AJOUT
     public Compteur getCompteurNumber(int pNum) {
-        return compteurs.get(pNum);
+    	for (Compteur c : compteurs) {
+    		if (c.getNumeroCompteur() == pNum)
+    			return c;
+    	}
+    	return null;
     }
     
     //## auto_generated 

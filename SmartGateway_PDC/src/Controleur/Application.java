@@ -1,6 +1,9 @@
 package Controleur;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.ListIterator;
 
 import javax.swing.UIManager;
 import javax.swing.UIManager.*;
@@ -41,11 +44,14 @@ public class Application {
 		    System.out.println("LookAndFeel indisponible !");
 		}
 		
-		RRCModel rrcm = new RRCModel();
-		Passerelle gateway = new Passerelle(rrcm);
+		
+		RRC rrc = new RRC(new RRCModel()); // classe RRC a regénérer selon v3
+		Passerelle gateway = new Passerelle(rrc.getItsRRCModel());
 		
 		FournisseurEnergie edf = new FournisseurEnergie("EDF", 0.25);
 		FournisseurEnergie veolia = new FournisseurEnergie("VEOLIA", 0.32);
+		
+		//Administrateur admin = new Administrateur();
 		
 		Consommateur conso1 = new Consommateur("Billy", "Joe", "bjo", "bjo", "3 avenue de paris", edf, 0);
 		Consommateur conso2 = new Consommateur("Jackie", "Museau", "jmu", "jmu", "1 avenue de lisbonne", veolia, 1);
@@ -80,21 +86,6 @@ public class Application {
 		gateway.ajouterCompteur(cpt4);
 		gateway.ajouterCompteur(cpt5);
 		
-		ControleurLED ctrlLED = new ControleurLED();
-		ControleLogin ctrlLog = new ControleLogin(utilisateurs);	
-		ControleurFournisseur ctrlFournisseur = new ControleurFournisseur(edf);
-		ControleurDisplay ctrlDisplay = new ControleurDisplay(gateway);
-		RRC rrc = new RRC(rrcm); // classe RRC a regénérer selon v3
-		
-		/*GlobalPane gp = new GlobalPane(ctrlDisplay, ctrlLED);
-		MainFrame fen = new MainFrame(rrc, ctrlFournisseur, gateway);
-		
-		fen.setContentPane(gp);
-		fen.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		fen.pack();
-		fen.repaint();
-		fen.setVisible(true);*/
-		
 		VueCompteur frameCpt1 = new VueCompteur(cpt1);
 		VueCompteur frameCpt2 = new VueCompteur(cpt2);
 		VueCompteur frameCpt3 = new VueCompteur(cpt3);
@@ -116,8 +107,34 @@ public class Application {
 		frameCpt5.setVisible(true);
 		frameCpt5.setLocation(0, 800);
 		
-		VueLogin fenLog = new VueLogin(ctrlLog, rrc);
+		
+		ListIterator<Compteur> it;
+		Compteur cpt;
+		
+		
+		for (int i = 1; i < 13; i++) { // on simule qu on save tous les mois
+			
+			LinkedList<Compteur> cpts = new LinkedList<>();
+			it = gateway.getCompteurs();
+			
+			while (it.hasNext()) {
+				cpt = it.next();
+				cpt.consommer();
+				cpts.add(cpt);
+			}
+			
+			gateway.setCompteurs(cpts);
+			rrc.transmettreDonnees(gateway, i);
+    	}
+		
+		ControleurLED ctrlLED = new ControleurLED();
+		ControleLogin ctrlLog = new ControleLogin(utilisateurs);	
+		ControleurFournisseur ctrlFournisseur = new ControleurFournisseur(edf);
+		ControleurDisplay ctrlDisplay = new ControleurDisplay(gateway);
+		
+		VueLogin fenLog = new VueLogin(ctrlLog, rrc, ctrlDisplay, ctrlLED, ctrlFournisseur, gateway);
 		fenLog.setVisible(true);
+		
 	}
 
 }
