@@ -1,7 +1,7 @@
 <test_cases>
 	<name>Administration de la passerelle intelligente</name>
 	<prefix>TC_AP</prefix>
-	<!--Cas de Tests -->
+	<!--Cas de Tests-->
 	<case>
 		<id>01</id> - <name>Connexion à la passerelle</name>
 		<description>
@@ -93,7 +93,7 @@
 <test_cases>
 	<name>Envoyer les mesures</name>
 	<prefix>TC_EM</prefix>
-	<!-- Cas de Tests -->
+	<!--Cas de Tests-->
 	<case>
 		<id>01</id> - <name>Vérification des compteurs</name>
 		<description>
@@ -137,7 +137,7 @@
 <test_cases>
 	<name>Collecter les mesures</name>
 	<prefix>TC_CM</prefix>
-	<!-- Cas de Tests -->
+	<!--Cas de Tests-->
 	<case>
 		<id>01</id> - <name>Réception des mesures</name>
 		<description>
@@ -177,7 +177,7 @@
 <test_cases>
 	<name>Définir Informations Tarifaire</name>
 	<prefix>TC_DIT</prefix>
-	<!-- Cas de Tests -->
+	<!--Cas de Tests-->
 	<case>
 		<id>01</id> - <name>Mettre à jour les tarifs</name>
 		<description>
@@ -220,7 +220,7 @@
 <test_cases>
 	<name>Régler Horloge Interne</name>
 	<prefix>TC_RHI</prefix>
-	<!-- Cas de Tests -->
+	<!--Cas de Tests-->
 	<case>
 		<id>01</id> - <name>Synchroniser horloge interne</name>
 		<description>
