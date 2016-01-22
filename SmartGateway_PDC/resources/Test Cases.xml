@@ -1,0 +1,258 @@
+<test_cases>
+	<name>Administration de la passerelle intelligente</name>
+	<prefix>TC_AP</prefix>
+	<!--Cas de Tests -->
+	<case>
+		<id>01</id> - <name>Connexion à la passerelle</name>
+		<description>
+			<action>Le MPO envoie une demande de connexion à l'adresse de la passerelle cibléee</action>
+			<expected-result>La passerelle répond par une demande d'authentificication</expected-result>
+			<action>Le MPO saisit les données d'identification</action>
+			<expected-result>La passerelle établit la connexion</expected-result>
+		</description>
+		<pre-conditions>
+			<condition>L'utilisateur est MPO</condition>
+		</pre-conditions>
+		<post-conditions>
+			<condition>Passerelle connectée au RRC</condition>
+		</post-conditions>
+		<data-required>
+			<data>Adresse de la passerelle</data>
+			<data>Données d'identification</data>
+		</data-required>
+	</case>
+	<case>
+		<id>02</id> - <name>Etat de passerelle : Prêt pour transfert</name>
+		<description>
+			<action>Le MPO envoie une interrogation à la passerelle</action>
+			<expected-result>La passerelle répond par l'envoi de son état</expected-result>
+		</description>
+		<pre-conditions>
+			<condition>L'utilisateur est MPO</condition>
+			<condition>Passerelle connectée au RRC</condition>
+		</pre-conditions>
+		<post-conditions>
+			<condition>Passerelle prête à communiquer</condition>
+		</post-conditions>
+		<data-required>
+		</data-required>
+	</case>
+	<case>
+		<id>03</id> - <name>Collecte des mesures</name>
+		<description>
+			<action>Le MPO envoie la commande de collecte des mesures à la passerelle</action>
+			<expected-result>La passerelle retourne les mesures de tous les compteurs y étant connectés</expected-result>
+		</description>
+		<pre-conditions>
+			<condition>L'utilisateur est MPO</condition>
+			<condition>Passerelle connectée au RRC</condition>
+			<condition>Passerelle prête à communiquer</condition>
+		</pre-conditions>
+		<post-conditions>
+			<condition>Le nombre de mesures correspond au nombre de compteurs</condition>
+		</post-conditions>
+		<data-required>
+		</data-required>
+	</case>
+	<case>
+		<id>04</id> - <name>Collecte d'une mesure spécifique</name>
+		<description>
+			<action>Le MPO envoie la commande de collecte d'une mesure en spécifiant l'identificateur à la passerelle</action>
+			<expected-result>La passerelle retourne la mesure du compteur</expected-result>
+		</description>
+		<pre-conditions>
+			<condition>L'utilisateur est MPO</condition>
+			<condition>Passerelle connectée au RRC</condition>
+			<condition>Passerelle prête à communiquer</condition>
+		</pre-conditions>
+		<post-conditions>
+		</post-conditions>
+		<data-required>
+			<data>Identificateur d'un compteur</data>
+		</data-required>
+	</case>
+	<case>
+		<id>05</id> - <name>Déconnexion de la passerelle</name>
+		<description>
+			<action>Le MPO envoie la commande de déconnexion</action>
+			<expected-result>La passerelle ferme la connexion</expected-result>
+		</description>
+		<pre-conditions>
+			<condition>L'utilisateur est MPO</condition>
+			<condition>Passerelle connectée au RRC</condition>
+		</pre-conditions>
+		<post-conditions>
+			<condition>La connexion est close</condition>
+			<condition>Communication impossible avec la passerelle</condition>
+		</post-conditions>
+		<data-required>
+		</data-required>
+	</case>
+</test_cases>
+
+<test_cases>
+	<name>Envoyer les mesures</name>
+	<prefix>TC_EM</prefix>
+	<!-- Cas de Tests -->
+	<case>
+		<id>01</id> - <name>Vérification des compteurs</name>
+		<description>
+			<action>La passerelle interroge tous ses compteurs</action>
+			<expected-result>Les compteurs renvoient leurs états</expected-result>
+		</description>
+		<pre-conditions>
+			<condition>L'acteur est Passerelle</condition>
+		</pre-conditions>
+		<post-conditions>
+			<condition>Tous les compteurs sont en état de communiquer avec la passerelle</condition>
+		</post-conditions>
+		<data-required>
+			<data>Liste des compteurs connectés</data>
+		</data-required>
+	</case>
+	<case>
+		<id>02</id> - <name>Envoi des mesures</name>
+		<description>
+			<action>La passerelle collecte toutes les mesures de ses compteurs</action>
+			<expected-result>Les compteurs renvoient leurs mesures</expected-result>
+			<action>La passerelle traite ces données (encapsulation)</action>
+			<action>La passerelle envoie les données au RRC</action>
+			<expected-result>Reception de l'accusé de réception</expected-result>
+		</description>
+		<pre-conditions>
+			<condition>L'acteur est Passerelle</condition>
+			<condition>Passerelle connectée au RRC</condition>
+			<condition>Passerelle prête à communiquer</condition>
+			<condition>Requête de collecte des mesures reçue</condition>
+		</pre-conditions>
+		<post-conditions>
+			<condition>Tous les compteurs sont en état de communiquer avec la passerelle</condition>
+		</post-conditions>
+		<data-required>
+			<data>Liste des compteurs connectés</data>
+		</data-required>
+	</case>
+</test_cases>
+
+<test_cases>
+	<name>Collecter les mesures</name>
+	<prefix>TC_CM</prefix>
+	<!-- Cas de Tests -->
+	<case>
+		<id>01</id> - <name>Réception des mesures</name>
+		<description>
+			<action>La Passerelle envoie une série de mesures</action>
+			<expected-result>Le RRC accuse réception des mesures</expected-result>
+			<action>Le RRC traite et stocke les mesures</action>
+		</description>
+		<pre-conditions>
+			<condition>L'acteur est RRC</condition>
+			<condition>Passerelle connectée au RRC</condition>
+			<condition>Passerelle et RRC prêts à communiquer</condition>
+		</pre-conditions>
+		<post-conditions>
+		</post-conditions>
+		<data-required>
+		</data-required>
+	</case>
+	<case>
+		<id>02</id> - <name>Relève des mesures</name>
+		<description>
+			<action>Le MPO exécute la relève des mesures à l'instant T</action>
+			<expected-result>La Passerelle renvoie les dernières mesures au RRC</expected-result>
+		</description>
+		<pre-conditions>
+			<condition>L'acteur est MPO</condition>
+			<condition>MPO authentifié sur le RRC</condition>
+			<condition>Passerelle connectée au RRC</condition>
+			<condition>Passerelle et RRC prêts à communiquer</condition>
+		</pre-conditions>
+		<post-conditions>
+		</post-conditions>
+		<data-required>
+		</data-required>
+	</case>
+</test_cases>
+
+<test_cases>
+	<name>Définir Informations Tarifaire</name>
+	<prefix>TC_DIT</prefix>
+	<!-- Cas de Tests -->
+	<case>
+		<id>01</id> - <name>Mettre à jour les tarifs</name>
+		<description>
+			<action>Comparer les relevés</action>
+			<expected-result>Indices de valeurs générés</expected-result>
+			<action>Évolution des tarifs en fonctions des indices de valeurs</action>
+		</description>
+		<pre-conditions>
+			<condition>L'acteur est Fournisseur d'Énergie</condition>
+		</pre-conditions>
+		<post-conditions>
+			<condition>Une révision des tarifs est générée</condition>
+		</post-conditions>
+		<data-required>
+			<data>Derniers relevés</data>
+			<data>Relevés précédents</data>
+			<data>Tarifs</data>
+		</data-required>
+	</case>
+	<case>
+		<id>02</id> - <name>Générer une facture</name>
+		<description>
+			<action>Appliquer les tarifs à la consommation relevée</action>
+			<expected-result>Une liste des montants</expected-result>
+			<action>Générer la facture</action>
+			<expected-result>Une facture exploitable (Texte, PDF, Mail)</expected-result>
+		</description>
+		<pre-conditions>
+			<condition>L'acteur est Fournisseur d'Énergie</condition>
+		</pre-conditions>
+		<post-conditions>
+		</post-conditions>
+		<data-required>
+			<data>Derniers relevés d'un consommateur</data>
+			<data>Tarifs</data>
+		</data-required>
+	</case>
+</test_cases>
+
+<test_cases>
+	<name>Régler Horloge Interne</name>
+	<prefix>TC_RHI</prefix>
+	<!-- Cas de Tests -->
+	<case>
+		<id>01</id> - <name>Synchroniser horloge interne</name>
+		<description>
+			<action>Le MPO exécute une séquence de synchronisation d'horloge UTC avec la Passerelle</action>
+			<expected-result>La Passerelle retourne son Heure</expected-result>
+		</description>
+		<pre-conditions>
+			<condition>L'acteur est MPO</condition>
+			<condition>MPO authentifié sur le RRC</condition>
+			<condition>Passerelle connectée au RRC</condition>
+			<condition>Passerelle et RRC prêts à communiquer</condition>
+		</pre-conditions>
+		<post-conditions>
+			<condition>L'horloge interne de la Passerelle est à jour</condition>
+		</post-conditions>
+		<data-required>
+		</data-required>
+	</case>
+</test_cases>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
